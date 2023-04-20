@@ -16,15 +16,21 @@ Artificial Intelligence
 Procedural Generation
 ---------------------
 
-### Mesh generation
+### Mesh and texture generation and transformation
 
 * Manifold Dual Contouring: https://people.engr.tamu.edu/schaefer/research/dualsimp_tvcg.pdf
+* "Procedural Generation of Rock Piles using Aperiodic Tiling": https://hal.science/hal-00463273/document
+  Turn mesh volumes into rock piles with a technique similar to marching cubes.
 
 
 ### Planets and Terrain
 
 * How to create a geographical model of the planet. https://www.youtube.com/watch?v=sLqXFF8mlEU&ab_channel=SebastianLague
 * Noise and terrain generation for beginners: https://youtu.be/CSa5O6knuwI
+* "Terrain Generation Using Procedural Models Based on Hydrology": https://hal.science/hal-01339224/file/siggraph2013.pdf
+  Create river systems, then infer the terrain that created them.
+* "Layered Data Representation for Visual Simulation of Terrain Erosion": http://data.exppad.com/public/papers/Layered_data_representation_for_Visual_Simulation_of_Terrain_Erosion.pdf
+  Erosion that uses stacked layers of materials.
 
 
 ### Cities and Buildings
@@ -32,6 +38,9 @@ Procedural Generation
 * city generation: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.688.5908&rep=rep1&type=pdf & http://www.citygen.net/files/citygen_gdtw07.pdf
 * About procgenning buildings and cities: https://www.youtube.com/watch?v=_1fvJ5sHh6A
 * More on city generation: https://youtu.be/tQEQriDgKXY
+* "Procedural Modeling of Cities": https://www.eecs.ucf.edu/~dcm/Teaching/COT4810-Spring2011/Literature/JamesGrisetti-ProceduralModelingofCities.pdf
+  Takes maps (elevation, water, vegetation, population density, zoning, street style, etc.) and generates cities down to building facades.
+* "Interactive Procedural Street Modeling": https://www2.cs.uh.edu/~chengu/Publications/streetModeling/street_sig08.pdf
 
 
 ### Trees
@@ -41,6 +50,22 @@ Procedural Generation
 * Plastic Trees: Interactive Self-Adapting Botanical Tree Models: https://www.academia.edu/download/46163297/Plastic_trees_interactive_self-adapting_20160602-6738-5ro83z.pdf
 * Rendering Leaves Using Hardware Tessellation: http://www.nik.no/2010/16-Skjermo.pdf
 * Remodelling of Botanical Trees for Real-Time Simulation: http://diglib.eg.org/bitstream/handle/10.2312/LocalChapterEvents.TPCG.TPCG11.001-008/001-008.pdf
+
+
+### Other
+
+#### Dendrites
+
+* "Visual Simulation of Ice Crystal Growth": https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=8aa81aa45523c7fdc562ed191bb0b4514a6e850b
+  Simulates the growth of ice on input textures.
+* "Simulation of Dendritic Painting": https://diglib.eg.org/bitstream/handle/10.1111/cgf13955/v39i2pp597-606.pdf
+* "Modeling Dendritic Shapes Using Path Planning": http://people.scs.carleton.ca/~mould/papers/den.pdf
+
+
+#### Crystals
+
+* "Interactive Modeling of Polyhedral Crystals": https://nakajima.cfbx.jp/IWAIT2021/papers/paper_26.pdf
+  A bit thin, but a starting point for growths of crystals.
 
 
 Graphics
