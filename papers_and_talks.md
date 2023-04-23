@@ -7,10 +7,57 @@ A collection of videos, academic papers, and other media.
 Artificial Intelligence
 -----------------------
 
-* F.E.A.R. GOAP: http://alumni.media.mit.edu/~jorkin/gdc2006_orkin_jeff_fear.pdf
-* Game AI books that are viewable online for free: http://www.gameaipro.com/
-* Something about parallelism in behavior trees: https://arxiv.org/pdf/1809.04898v1.pdf https://lornat75.github.io/papers/2019/colledanchise-iros.pdf
-* Navmesh-less navigation in Hyper Scape using neural networks: https://www.youtube.com/watch?v=DKdQFajLfzk https://arxiv.org/pdf/2011.04764.pdf 
+* The "Game AI Pro", collecting lots of various articles: http://www.gameaipro.com/
+
+
+### Navigation
+
+* Navmesh-less navigation in Hyper Scape using neural networks: https://www.youtube.com/watch?v=DKdQFajLfzk https://arxiv.org/pdf/2011.04764.pdf
+
+
+### Behavior trees
+
+* Parallelism in Behavior Trees
+  * "Improving the Parallel Execution of Behavior Trees": https://arxiv.org/pdf/1809.04898v1.pdf
+    * Extends Behavior Trees by giving each node functions that report
+      the node's current progress, and its use of resources.
+    * Defines a `ParallelSync` node that routes ticks to the least
+      progressed child tree.
+    * Defines a `ParallelMutex` node that routes ticks to children with
+      the highest priority (according to a policy that implements aging)
+      as long as the necessary resources are available.
+    * Both nodes, like the basic `Parallel`, fails if any child fails,
+      succeeds when all children succeed, and otherwise remains active.
+  * "Analysis and Exploitation of Synchronized Parallel Executions in
+Behavior Trees": https://lornat75.github.io/papers/2019/colledanchise-iros.pdf
+    * Builds on "Improving the Parallel Execution of Behavior Trees".
+    * Defines `ParallelSyncAbsolute` that has a list of barrier values.
+      If there are children with a progress below any given barrier, the
+      children with progress equal to or above that barrier will no
+      longer receive ticks.
+    * Defines `ParallelSyncRelative` that ticks children so as to keep
+      the slowest within a given range of the fastest.
+  
+
+
+### Search
+
+* "Playing Your Cards Right: The Hierarchical Portfolio Search AI of Prismata": https://www.youtube.com/watch?v=sQSL9j7W7uA
+  * A refinement for general tree search.
+  * The problem: Searching through all possible combinations of
+    fundamental actions leads to a prohibitively high branching factor.
+  * Designers create portfolios of behaviors, which, given a state,
+    execute actions. During search, portfolios provide valid
+    combinations of behaviors, with which successor states are then
+    generated. The branching factor thus is the number of behavior
+    combinations.
+  * Portfolios can be tailored to cause desired behavior patterns.
+* "Three States and a Plan: The A.I. of F.E.A.R.": http://alumni.media.mit.edu/~jorkin/gdc2006_orkin_jeff_fear.pdf
+  * A refinement of STRIPS planning.
+  * Behaviors have preconditions that the state must fulfill for the
+    behavior to be executable, and postconditions that will be fulfilled
+    once the action is executed.
+  * During search, behavior are concatenated into plans.
 
 
 Procedural Generation
