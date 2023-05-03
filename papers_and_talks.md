@@ -210,3 +210,4 @@ Things that don't fit into any category above
 * Futuristic typesetting https://typesetinthefuture.com/
 * Lots of short videos, at least some of them gamedev-related: https://www.youtube.com/c/Garbaj/videos
 * What went wrong with gaming (marketing)?: https://youtu.be/g16heGLKlTA?t=506
+* Introduction on aerodynamics: https://github.com/barbagroup/AeroPython
