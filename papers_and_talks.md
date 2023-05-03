@@ -7,6 +7,7 @@ A collection of videos, academic papers, and other media.
 Artificial Intelligence
 -----------------------
 
+* Introductory overview on game theory: https://www.theorie.physik.uni-muenchen.de/lsfrey/teaching/archiv/sose_06/softmatter/talks/Heiko_Hotz-Spieltheorie-Handout.pdf
 * The "Game AI Pro", collecting lots of various articles: http://www.gameaipro.com/
 
 
