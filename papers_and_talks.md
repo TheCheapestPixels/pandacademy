@@ -135,6 +135,7 @@ Graphics
 Clouds and Water
 ----------------
 
+* Jupyter notebooks accompanying a lecture on the Navier-Stokes equation: https://github.com/barbagroup/CFDPython
 * Volumetric cloud research from Horizon Zero dawn: http://advances.realtimerendering.com/s2015/The%20Real-time%20Volumetric%20Cloudscapes%20of%20Horizon%20-%20Zero%20Dawn%20-%20ARTR.pdf
 * Simulating cloud dynamics and rendering clouds: https://users.cg.tuwien.ac.at/bruckner/ss2004/seminar/A3b/Harris2003%20-%20Simulation%20of%20Cloud%20Dynamics%20on%20Graphics%20Hardware.pdf
 * Simulation of Cloud Dynamics on Graphics Hardware: http://www.markmark.net/cloudsim/index.html
