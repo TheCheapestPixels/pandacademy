@@ -38,7 +38,14 @@ Behavior Trees": https://lornat75.github.io/papers/2019/colledanchise-iros.pdf
       longer receive ticks.
     * Defines `ParallelSyncRelative` that ticks children so as to keep
       the slowest within a given range of the fastest.
-  
+
+
+### HTN: Hierarchical Task Networks
+
+* "SHOP2: An HTN Planning System": https://arxiv.org/pdf/1106.4869.pdf
+  * Foundational paper on HTN.
+* "Combining Domain-Independent Planning and HTN Planning: The Duet Planner": https://www.cs.umd.edu/~nau/papers/gerevini2008combining.pdf
+  * Seems to combine GOAP and HTN.
 
 
 ### Search
