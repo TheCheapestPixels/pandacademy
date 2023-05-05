@@ -137,7 +137,8 @@ Graphics
   * AI learns martial arts from motion capture data: https://www.youtube.com/watch?v=t33jvL7ftd4
   * Advanced IK techniques: https://www.youtube.com/watch?v=KLjTU0yKS00
   * Relation between eye gaze and foot placement when walking over rough terrain: https://www.sciencedirect.com/science/article/pii/S0960982218303099 
-  * Youtube channel about game animation: https://yewtu.be/channel/UCxO_ya-RmAXCXJCU54AxYFw  
+  * Youtube channel about game animation: https://yewtu.be/channel/UCxO_ya-RmAXCXJCU54AxYFw
+  * "5 ways to draw an outline": https://alexanderameye.github.io/notes/rendering-outlines/
 
 
 Clouds and Water
