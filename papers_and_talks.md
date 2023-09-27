@@ -44,8 +44,17 @@ Behavior Trees": https://lornat75.github.io/papers/2019/colledanchise-iros.pdf
 
 * "SHOP2: An HTN Planning System": https://arxiv.org/pdf/1106.4869.pdf
   * Foundational paper on HTN.
+* "Automated Planning and Scheduling; Lecture 8: Hierarchical Planning": https://algo2.iti.kit.edu/balyo/plan/files/l08.pdf
+  * Lecture slides on HTN basics
+* "An Overview of Hierarchical Task Network Planning": https://www.researchgate.net/profile/Ilche-Georgievski/publication/261217494_An_Overview_of_Hierarchical_Task_Network_Planning/links/54f9a4760cf28d6deca5128a/An-Overview-of-Hierarchical-Task-Network-Planning.pdf
+* "Hierarchical Task Network (HTN) Planning": https://pages.mtu.edu/~nilufer/classes/cs5811/2012-fall/lecture-slides/cs5811-ch11b-htn.pdf
+  * Also lecture slides on HTN basics
 * "Combining Domain-Independent Planning and HTN Planning: The Duet Planner": https://www.cs.umd.edu/~nau/papers/gerevini2008combining.pdf
   * Seems to combine GOAP and HTN.
+* "On Hierarchical Task Networks": https://hal.science/hal-01692705/document
+  * A definition of semantics for HTN
+* "Learning Hierarchical Task Networks with Preferences from Unannotated Demonstrations": https://proceedings.mlr.press/v155/chen21d/chen21d.pdf
+  * Learn tasks from examples, then optimize them.
 
 
 ### Search
@@ -96,6 +105,8 @@ Procedural Generation
 * "Procedural Modeling of Cities": https://www.eecs.ucf.edu/~dcm/Teaching/COT4810-Spring2011/Literature/JamesGrisetti-ProceduralModelingofCities.pdf
   Takes maps (elevation, water, vegetation, population density, zoning, street style, etc.) and generates cities down to building facades.
 * "Interactive Procedural Street Modeling": https://www2.cs.uh.edu/~chengu/Publications/streetModeling/street_sig08.pdf
+* "The Dual Language of Geometry in Gothic Architecture: The Symbolic Message of Euclidian Geometry versus the Visual Symbolic Message of Euclidian Geometry versus the Visual Dialogue of Fractal Geometry Dialogue of Fractal Geometry": https://digital.kenyon.edu/cgi/viewcontent.cgi?article=1061&context=perejournal
+  An analysis of geometry in Gothic architecture.
 
 
 ### Trees
@@ -193,6 +204,24 @@ Storytelling
 * A formula for story structure: https://www.youtube.com/watch?v=8fXE-E1hjKk
 * Narrative lego: https://www.youtube.com/watch?v=p40p0AVUH70
 * What it takes to write stories for AAA games (Erik Wolpaw): https://youtu.be/RzkVD94yAmA
+
+
+Petri Nets and Workflows
+------------------------
+
+Petri Nets are networks of Places, which can store markers, and
+Transitions, which remove sets of markers from their input places, and
+add markers to their output places. They are modeling systems similar to
+how FSMs do it, and can algorithmically be transformed into FSMs, and
+vice versa; They also can be tested algorithmically for possible
+deadlocks and livelocks.
+
+Workflows are a subset of Petri Nets, which find application in modeling
+industrial processes.
+
+* http://www.project-open.com/en/workflow-petri-nets
+* http://mlwiki.org/index.php/Workflow_Nets
+* http://www.workflowpatterns.com/patterns/
 
 
 Master Classes
