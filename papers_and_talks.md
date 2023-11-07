@@ -85,6 +85,9 @@ Procedural Generation
 * Manifold Dual Contouring: https://people.engr.tamu.edu/schaefer/research/dualsimp_tvcg.pdf
 * "Procedural Generation of Rock Piles using Aperiodic Tiling": https://hal.science/hal-00463273/document
   Turn mesh volumes into rock piles with a technique similar to marching cubes.
+* "Image Quilting for Texture Synthesis and Transfer": https://people.eecs.berkeley.edu/~efros/research/quilting/quilting.pdf
+  Turns a small sample image of a kind-of-repetitive texture into a large one made up of copypasted bits.
+  Can also do style transfer.
 
 
 ### Planets and Terrain
@@ -120,6 +123,12 @@ Procedural Generation
 
 ### Other
 
+#### Patterns
+
+* "Revisiting Ad Quadratum and Ad Triangulum to Generate Hyperbolic Tessellations": https://archive.bridgesmathart.org/2022/bridges2022-387.pdf
+  Generates tesselation for the ribbing on the domes of vaults.
+
+
 #### Dendrites
 
 * "Visual Simulation of Ice Crystal Growth": https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=8aa81aa45523c7fdc562ed191bb0b4514a6e850b
@@ -132,6 +141,21 @@ Procedural Generation
 
 * "Interactive Modeling of Polyhedral Crystals": https://nakajima.cfbx.jp/IWAIT2021/papers/paper_26.pdf
   A bit thin, but a starting point for growths of crystals.
+
+
+#### Periodic Tiles
+
+* "Euclidean tilings by convex regular polygons": https://en.wikipedia.org/wiki/Euclidean_tilings_by_convex_regular_polygons
+  Wikipedia is always a good entry point.
+* "Infinite Tilings": https://schoengeometry.com/c-infintil.html
+
+
+#### Wang Tiles
+
+* "Wang Tiles": http://www.cr31.co.uk/stagecast/wang/array.html
+  An explanation of different types of Wang Tiling, which uses a tileset to texture an image aperiodically.
+* "Wang Tiles for Image and Texture Generation": https://kops.uni-konstanz.de/server/api/core/bitstreams/f74fb7e3-333f-43ac-91a7-9cbd26527d60/content
+  Takes an input image, image quilts it, uses that as a basis for Wang tiles.
 
 
 Graphics
