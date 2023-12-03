@@ -130,30 +130,43 @@ sattr = dummy.get_attrib(ShaderAttrib)
 # invocations, and we need `resolution`x`resolution`x1 invocations in
 # total, so it's trivial to math out how many workgroups we need.
 workgroups = (resolution // 16, resolution // 16, 1)
-# Here... we... GO! ...in a moment. When we dispatch a shader like this,
-# Panda3D will wait with its execution until the current frame is
-# rendered.
+# Here... we... GO!
 base.graphicsEngine.dispatch_compute(
     workgroups,
     sattr,
     base.win.get_gsg(),
 )
+# A word about timing: If you are using the multithreaded pipeline, then
+# there might be a frame being rendered right now. In that case,
+# `dispatch_compile` will wait until the rendering has finished, and
+# then submit the job before returning. That also means that this code
+# right here will be stalled until then.
 
-# Since right here and now we *aren't* rendering a frame at all, I am
-# utterly clueless on whether the shader will be run before or after the
-# first frame, and I also don't know how to get the data from the GPU
-# back into the texture. I mean, we know that it works because the quad
-# on the screen is green, but where is the data to prove it?
-# Well, here:
+# So, as you can (hopefully) see when you run this code, the quad on the
+# screen is green, but where is the data to prove it from the code's
+# side?
+# Well, it's not here, because on the CPU side, we still think that
+# image and texture are black:
 c = LColor(0, 0, 0, 0)
 texture_out.peek().fetch_pixel(c, 0, 0)
 print(f"Texture color: {c}")
 print(f"Image color  : {image_out.get_point(0, 0)}")
+
+# But if we just tell Panda3D that we want the updated texture content
+# copied back from GPU to CPU, it will gladly do so.
 print(f"Extracting texture data...")
 base.graphicsEngine.extract_texture_data(texture_out, base.win.get_gsg())
+# Another work on timing: Since CPU and GPU run independently from one
+# another, the compute shader may have finished long before we made that
+# call, or it might still be running. In the latter case, the
+# `extract_texture_data` call will block until it has finished running.
+
+# Now our texture has been updated.
 texture_out.peek().fetch_pixel(c, 0, 0)
 print(f"Texture color: {c}")
 print(f"Image color  : {image_out.get_point(0, 0)}")
+# The image, however, has not been updated, so let's do that and
+# complete the cycle.
 print(f"Storing texture to image...")
 texture_out.store(image_out)
 print(f"Texture color: {c}")
