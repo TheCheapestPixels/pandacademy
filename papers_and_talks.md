@@ -94,6 +94,61 @@ Procedural Generation
 
 * How to create a geographical model of the planet. https://www.youtube.com/watch?v=sLqXFF8mlEU&ab_channel=SebastianLague
 * Noise and terrain generation for beginners: https://youtu.be/CSa5O6knuwI
+* "Fast Hydraulic Erosion Simulation and Visualization on GPU": https://xing-mei.github.io/files/erosion.pdf
+  * Data
+    * `b`: Terrain height
+    * `d`: Water height
+    * `s`: Suspended sediment amount
+    * `f`: Outflow flux
+    * `v`: Velocity field
+  * Process
+    * Determine timestep `dt`
+    * Increase water (rainfall, springs):
+      post-increase water height `d1` = `d` + user-defined influx rate * `dt`
+    * Simulate flow (update water height and velocity field)
+      * Compute outflux flow; We treat neighboring cells as if they were connected by pipes.
+        Consider boundary conditions! Make flux to edges 0, or loop it around.
+        * `cf`: Current flux	
+	* `g`: Gravity
+	* `l`: Length of the pipe
+	* `A`: Cross-section of the pipe
+	* `dh`: Height difference between cells = (own terrain height + own `d1`) - (neighbor terrain height + neighbor `d1`)
+	pipe coefficient = A * (g * dh / l)
+	neighbor flux = max(0, current flux + dt * pipe coefficient)
+	scaling factor = min(1, `d1` * xy distance / (sum of all flux * dt))
+	total flux = scaling factor * all neighbor fluxes
+      * Update water surface
+        net water volume change = dt * all neighbor fluxes
+	new water height `d2` = `d1` + net water volume change / distance to neighors  # WTF???
+      * Update velocity field
+        Consider only vertical flow.
+	`u` / `v` are velocity in X / Y direction
+	For X and Y direction separately:
+	* delta Water `dWX` = sum up the delta flows with the neighbors.
+	* equation: `dWX` = distance Y (???) * (average of `d1` and `d2`) * u
+	* derive u (and v accordingly for `dWY`).
+	For simulation to be stable, dt * u/v velocity <= distance to neighbor
+    * Erosion-deposition
+      Note: local tilt angle may require setting a lower bound, otherwise sediment transport capacity will be near zero at low tilt.
+      * `Ks`: dissolving constant
+      * `Kd`: deposition constant
+      sediment transport capacity `C` = scaling factor * sin(local tilt angle) * |velocity|
+      if sediment transport capacity > suspended sediment amount:
+          # add soil to water
+	  dissolved amount = Ks * (C - s)
+	  new terrain height = b - dissolved amount
+	  intermediate sediment amount `s1` = s + dissolved amount
+      else:
+          # deposit sediment
+	  deposited amount = Kd * (s - C)
+	  new terrain height = b + deposited amount
+	  intermediate sediment amount `s1` = s - deposited amount
+    * Transport sediment
+      new suspended sediment amount = s1 at position - uv * dt, interpolating the four nearest neighbors
+    * Evaporate water
+      Temperature is assumed to be the same everywhere.
+      * `Ke`: Evaporation constant
+      new water height = `d2` + (1 - Ke * dt)
 * "Terrain Generation Using Procedural Models Based on Hydrology": https://hal.science/hal-01339224/file/siggraph2013.pdf
   Create river systems, then infer the terrain that created them.
 * "Layered Data Representation for Visual Simulation of Terrain Erosion": http://data.exppad.com/public/papers/Layered_data_representation_for_Visual_Simulation_of_Terrain_Erosion.pdf
@@ -292,6 +347,22 @@ Master Classes
 * Richard Garriot talks Ultima: https://archive.org/details/warren_spector_master_class/12+-+richard_garriot.mov
 * Will Wright on Designing User Interfaces to Simulation Games: https://donhopkins.medium.com/designing-user-interfaces-to-simulation-games-bd7a9d81e62d
 * Warren Spector's UT class: https://www.youtube.com/playlist?list=PLC4AF467F9391D767
+
+
+Graphics/Gamedev YouTubers
+--------------------------
+
+* GDC, Game Developers Conference; Talks about the latest technology,
+  and everything else related to the work and business of game
+  development: https://www.youtube.com/@Gdconf
+* Acerola; Graphics programming: https://www.youtube.com/@Acerola_t
+* Sebastian Lague: https://www.youtube.com/@SebastianLague
+* Vercidium: https://www.youtube.com/@Vercidium
+* Inigo Quilez, "Painting with Maths": https://www.youtube.com/@InigoQuilez
+* Adam Millard, the Architect of Games: https://www.youtube.com/@ArchitectofGames
+* GMTK, Game Maker's Toolkit: https://www.youtube.com/@GMTK
+* AI and Games: https://www.youtube.com/@AIandGames
+* The Coding Train; General recreational programming: https://www.youtube.com/@TheCodingTrain
 
 
 Things that don't fit into any category above

@@ -27,7 +27,6 @@ from panda3d.core import Vec4
 from panda3d.core import Shader
 from panda3d.core import ShaderAttrib
 from panda3d.core import CardMaker
-from panda3d.core import PNMImage
 from panda3d.core import PfmFile
 from panda3d.core import TextureStage
 from panda3d.core import Texture

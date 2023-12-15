@@ -7,8 +7,8 @@ brings it all together through software development. To master it in
 fullness would require multiple lifetimes.
 
 Video game development is also a field that getting involved with is
-easier than ever before. Powerful tools are freely available.
-Professional developers reveal all the latest tricks in GDC talks, and
+easier than ever before. Powerful tools are freely available,
+professional developers reveal all the latest tricks in GDC talks, and
 content creators flood the Internet with information.
 
 The purpose of this repository is to accrete knowledge about video game
@@ -67,3 +67,38 @@ TODO
 * [From (nearly) zero to knowing what rendering and shaders are all about](graphics_programming.md)
   needs to have its Panda3D-centric parts split out into its own
   courses.
+
+
+NOTES
+-----
+
+* Scene graph
+  * Relative spatial arrangement of nodes
+  * Render attributes
+* Object basics
+  * Geom is geometry + animation (what else?)
+  * Texture is metadata plus ram image in VRAM
+* Advanced rendering techniques
+  * PBR: Throw lots of optics-derived math at your lightning model.
+    The current champion is the Disney's Principled BSDF.
+    * Blender explaining the Principled BSDF: https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/principled.html
+    * Values for PBR artists: https://physicallybased.info/
+    * PBR textbook: https://pbr-book.org/4ed/contents
+  * SDR / HDR
+    * SDR: Keep values in the [0.0, 1.0] range
+    * HDR: Use open values for total intensity, then tonemap them.
+* Noise
+  * https://github.com/stegu
+  * https://github.com/tuxalin/procedural-tileable-shaders
+* Shaders
+  * https://thebookofshaders.com/
+  * Sub-Surface Scattering: https://therealmjp.github.io/posts/sss-intro/
+  * Multichannel Signed Distance Fields: https://github.com/Chlumsky/msdfgen
+  * What are bank conflicts? (rather arcane performance optimization problem) https://developer.nvidia.cn/gpugems/gpugems3/part-vi-gpu-computing/chapter-39-parallel-prefix-sum-scan-cuda
+
+* Profiling / debugging tools
+  * https://gpuopen.com/rgp/
+  * https://developer.nvidia.com/nsight-graphics
+  * https://www.intel.com/content/www/us/en/developer/tools/graphics-performance-analyzers/download.html
+  * https://www.cltracer.com/
+  * RenderDoc
