@@ -49,16 +49,19 @@ a starting point.
 Content
 -------
 
-* [From (nearly) zero to knowing what rendering and shaders are all about](graphics_programming.md)
+* [From (nearly) zero to knowing what rendering and shaders are all about](graphics_programming.md):
   A rough course on the basics of modern realtime computer graphics.
   Instead of loading models and textures from artist-created files like
   a sane person, we create them in code, so as to get to know the data
   structures involved. Then we take a look at how that data is processed
   on the GPU. We round it out with a look at the infrastructure that
   turns it all into a cohesive engine.
+* [Noise](noise.md): Notes on noise, e.g. Perlin, Worley, PSRD.
 * [Papers and Talks](papers_and_talks.md): A collection of, and notes
   on, academic papers, blog posts, video presentations, and
   conference-style talks.
+* [Other people's content](other_peoples_content.md): Lots of
+  educational stuff that other people created.
 
 
 TODO
@@ -83,7 +86,6 @@ NOTES
     The current champion is the Disney's Principled BSDF.
     * Blender explaining the Principled BSDF: https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/principled.html
     * Values for PBR artists: https://physicallybased.info/
-    * PBR textbook: https://pbr-book.org/4ed/contents
   * SDR / HDR
     * SDR: Keep values in the [0.0, 1.0] range
     * HDR: Use open values for total intensity, then tonemap them.
@@ -95,10 +97,13 @@ NOTES
   * Sub-Surface Scattering: https://therealmjp.github.io/posts/sss-intro/
   * Multichannel Signed Distance Fields: https://github.com/Chlumsky/msdfgen
   * What are bank conflicts? (rather arcane performance optimization problem) https://developer.nvidia.cn/gpugems/gpugems3/part-vi-gpu-computing/chapter-39-parallel-prefix-sum-scan-cuda
-
 * Profiling / debugging tools
+  * RenderDoc: https://renderdoc.org/
   * https://gpuopen.com/rgp/
   * https://developer.nvidia.com/nsight-graphics
   * https://www.intel.com/content/www/us/en/developer/tools/graphics-performance-analyzers/download.html
   * https://www.cltracer.com/
-  * RenderDoc
+* OpenGL / GLSL tutorials: https://www.opengl.org/sdk/docs/tutorials/
+* Textbooks
+  * https://learnopengl.com/
+  * PBR textbook: https://pbr-book.org/4ed/contents

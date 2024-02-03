@@ -9,6 +9,7 @@ Artificial Intelligence
 
 * Introductory overview on game theory: https://www.theorie.physik.uni-muenchen.de/lsfrey/teaching/archiv/sose_06/softmatter/talks/Heiko_Hotz-Spieltheorie-Handout.pdf
 * The "Game AI Pro", collecting lots of various articles: http://www.gameaipro.com/
+* [Artificial Intelligence: Foundations of Computational Agents](https://artint.info/3e//html/ArtInt3e.html)
 
 
 ### Navigation
@@ -80,6 +81,11 @@ Behavior Trees": https://lornat75.github.io/papers/2019/colledanchise-iros.pdf
 Procedural Generation
 ---------------------
 
+### Noise
+
+* "Landscape Automata for Search Based Procedural Content Generation": https://web.archive.org/web/20161002142355id_/http://eldar.mathstat.uoguelph.ca/dashlock/CIG2013/papers/paper_32.pdf
+
+
 ### Mesh and texture generation and transformation
 
 * Manifold Dual Contouring: https://people.engr.tamu.edu/schaefer/research/dualsimp_tvcg.pdf
@@ -95,68 +101,23 @@ Procedural Generation
 * How to create a geographical model of the planet. https://www.youtube.com/watch?v=sLqXFF8mlEU&ab_channel=SebastianLague
 * Noise and terrain generation for beginners: https://youtu.be/CSa5O6knuwI
 * "Fast Hydraulic Erosion Simulation and Visualization on GPU": https://xing-mei.github.io/files/erosion.pdf
-  * Data
-    * `b`: Terrain height
-    * `d`: Water height
-    * `s`: Suspended sediment amount
-    * `f`: Outflow flux
-    * `v`: Velocity field
-  * Process
-    * Determine timestep `dt`
-    * Increase water (rainfall, springs):
-      post-increase water height `d1` = `d` + user-defined influx rate * `dt`
-    * Simulate flow (update water height and velocity field)
-      * Compute outflux flow; We treat neighboring cells as if they were connected by pipes.
-        Consider boundary conditions! Make flux to edges 0, or loop it around.
-        * `cf`: Current flux	
-	* `g`: Gravity
-	* `l`: Length of the pipe
-	* `A`: Cross-section of the pipe
-	* `dh`: Height difference between cells = (own terrain height + own `d1`) - (neighbor terrain height + neighbor `d1`)
-	pipe coefficient = A * (g * dh / l)
-	neighbor flux = max(0, current flux + dt * pipe coefficient)
-	scaling factor = min(1, `d1` * xy distance / (sum of all flux * dt))
-	total flux = scaling factor * all neighbor fluxes
-      * Update water surface
-        net water volume change = dt * all neighbor fluxes
-	new water height `d2` = `d1` + net water volume change / distance to neighors  # WTF???
-      * Update velocity field
-        Consider only vertical flow.
-	`u` / `v` are velocity in X / Y direction
-	For X and Y direction separately:
-	* delta Water `dWX` = sum up the delta flows with the neighbors.
-	* equation: `dWX` = distance Y (???) * (average of `d1` and `d2`) * u
-	* derive u (and v accordingly for `dWY`).
-	For simulation to be stable, dt * u/v velocity <= distance to neighbor
-    * Erosion-deposition
-      Note: local tilt angle may require setting a lower bound, otherwise sediment transport capacity will be near zero at low tilt.
-      * `Ks`: dissolving constant
-      * `Kd`: deposition constant
-      sediment transport capacity `C` = scaling factor * sin(local tilt angle) * |velocity|
-      if sediment transport capacity > suspended sediment amount:
-          # add soil to water
-	  dissolved amount = Ks * (C - s)
-	  new terrain height = b - dissolved amount
-	  intermediate sediment amount `s1` = s + dissolved amount
-      else:
-          # deposit sediment
-	  deposited amount = Kd * (s - C)
-	  new terrain height = b + deposited amount
-	  intermediate sediment amount `s1` = s - deposited amount
-    * Transport sediment
-      new suspended sediment amount = s1 at position - uv * dt, interpolating the four nearest neighbors
-    * Evaporate water
-      Temperature is assumed to be the same everywhere.
-      * `Ke`: Evaporation constant
-      new water height = `d2` + (1 - Ke * dt)
 * "Terrain Generation Using Procedural Models Based on Hydrology": https://hal.science/hal-01339224/file/siggraph2013.pdf
   Create river systems, then infer the terrain that created them.
 * "Layered Data Representation for Visual Simulation of Terrain Erosion": http://data.exppad.com/public/papers/Layered_data_representation_for_Visual_Simulation_of_Terrain_Erosion.pdf
   Erosion that uses stacked layers of materials.
+* "Procedural Generation of 3D Caves for Games on the GPU": https://lucris.lub.lu.se/ws/portalfiles/portal/6067634/5464988.pdf
+  L-System-based
+* "Ecologically Sound Procedural Generation of Natural Environments": https://pure.tudelft.nl/ws/files/36591423/36591255.pdf
+* "Procedural Riverscapes": https://par.nsf.gov/servlets/purl/10167932
+* "Procedural Generation of Mediterranean Environments": http://161.53.22.65/datoteka/821096.dcvis_18_3842.pdf
+* "Generating Compelling Procedural 3D Environments and Landscapes": https://odr.chalmers.se/items/fbecc575-1358-4d5d-a35f-1b2af96e4763/full
+* "A Review of Digital Terrain Modeling": https://hal.science/hal-02097510v1/document
+* "A 3D visualisation environment modelling the evolution of north-west Europe since the Last Glacial Maximum": https://diglib.eg.org/bitstream/handle/10.2312/LocalChapterEvents.TPCG.TPCG07.229-235/229-235.pdf?sequence=1&isAllowed=y
 
 
 ### Cities and Buildings
 
+* "Procedural Generation of Urban Landscape with Extended L-System for Virtual Worlds": https://core.ac.uk/download/pdf/223208563.pdf
 * city generation: http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.688.5908&rep=rep1&type=pdf & http://www.citygen.net/files/citygen_gdtw07.pdf
 * About procgenning buildings and cities: https://www.youtube.com/watch?v=_1fvJ5sHh6A
 * More on city generation: https://youtu.be/tQEQriDgKXY
@@ -165,6 +126,7 @@ Procedural Generation
 * "Interactive Procedural Street Modeling": https://www2.cs.uh.edu/~chengu/Publications/streetModeling/street_sig08.pdf
 * "The Dual Language of Geometry in Gothic Architecture: The Symbolic Message of Euclidian Geometry versus the Visual Symbolic Message of Euclidian Geometry versus the Visual Dialogue of Fractal Geometry Dialogue of Fractal Geometry": https://digital.kenyon.edu/cgi/viewcontent.cgi?article=1061&context=perejournal
   An analysis of geometry in Gothic architecture.
+* "Procedural Design of Urban Open Spaces": https://papers.cumincad.org/data/works/att/ecaade2007_143.content.pdf
 
 
 ### Trees
@@ -179,39 +141,10 @@ Procedural Generation
 ### Aurora Borealis / Australis
 
 * "Simulating the Aurora Borealis": https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=f3bfb057bb50e020b7a14eb42cf97b562e169635
-  * Summarizes auroral science
-  * Electrons from solar winds are caught by Earth's magnetic fields.
-    * Macroscopically, they travel straight downwards, but microscopically they spin around the straight line.
-    * On their way down, they collide with atoms and molecules, depositing energy, and getting deflected laterally.
-    * Deposited energy gets reemitted as photons after a delay. The most important contributors are:
-      * Red: Atomic oxygen, 630.0nm, ~110s, upper parts
-      * Green: Atomic oxygen, 557.7nm, <0.7s, ~100km
-      * Blue: Ionized nitrogen, 427.8nm, <0.001s, lower border
-      An atom's movement during long reemission times may smear out the aurora. Atom-atom collisions remove the ability to re-emit (quenching).
-  * Electrons fall in sheets that are subject to curtain-like bending and folding.
-    * Spirals: ~50km apart
-    * Folds: ~ 20km apart, exist for more than a second
-    * Curls: ~2-10km apart, 0.25-0.75s, cause rays of below 1km diameter
-
-
-
+  See [Aurora paper dissections](paper_dissections/aurora.md)
 * "Interactive Volume Rendering Aurora on the GPU": https://otik.uk.zcu.cz/bitstream/11025/1242/1/Lawlor.pdf
-  * Very light on actual math, but references other papers for that purpose.
-  * Uses a geometry-free raytracing approach.
-  * The Lazarev charged particle energy deposition model is applied to the MSIS-E-90 atmosphere to create a lookup table.
-    * LUT(input energy, atmospheric altitude) = relative deposited energy
-  * 2D splines to sketch out the footprint of an auroral storm on the planet.
-  * Splines get mapped to `curtain footprint`, a large 2D texture.
-  * From the `curtain footprint`, a lower-resolution `distance map` is created using jump flooding.
-    * "Jump flooding in GPU with applications to Voronoi diagram and distance transform": https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a797809529937a41abf7133e90914178a64b0897
-  * The raytracer uses the distance map to jump over empty space, but sample bands in detail.
-    * Being too precise here can lead to performance losses due to the shader experiencing branch divergence.
-  * A periodic, thin, long strip of texture is tiled along the splines to create width.
-  * Fluid dynamics (2D Stam-type fluid advection simulator) on the strip create turbulence over the aurora's lifetime.
-    * "Stable Fluids": https://cg.informatik.uni-freiburg.de/intern/seminar/gridFluids_StableFluids.pdf
-      "We use a multigrid divergence correction approach for the Poisson step, which is both asymptotically faster than an FFT or conjugate gradient approach, and makes the simulator amenable to a graphics hardware implementation."
-  * The turbulent strip is used as the electron flux for the LUT.
-  * Map the aurora's emission peaks to CIE XYZ to sRGB, according to "Simulating the Aurora Borealis".
+  See [Aurora paper dissections](paper_dissections/aurora.md)
+* "Aurora Rendering with Sheet Modeling Technique": http://www.cs.rpi.edu/~cutler/classes/advancedgraphics/S09/final_projects/ng.pdf
 
 
 ### Other
@@ -341,30 +274,6 @@ industrial processes.
 * http://www.workflowpatterns.com/patterns/
 
 
-Master Classes
---------------
-
-* Richard Garriot talks Ultima: https://archive.org/details/warren_spector_master_class/12+-+richard_garriot.mov
-* Will Wright on Designing User Interfaces to Simulation Games: https://donhopkins.medium.com/designing-user-interfaces-to-simulation-games-bd7a9d81e62d
-* Warren Spector's UT class: https://www.youtube.com/playlist?list=PLC4AF467F9391D767
-
-
-Graphics/Gamedev YouTubers
---------------------------
-
-* GDC, Game Developers Conference; Talks about the latest technology,
-  and everything else related to the work and business of game
-  development: https://www.youtube.com/@Gdconf
-* Acerola; Graphics programming: https://www.youtube.com/@Acerola_t
-* Sebastian Lague: https://www.youtube.com/@SebastianLague
-* Vercidium: https://www.youtube.com/@Vercidium
-* Inigo Quilez, "Painting with Maths": https://www.youtube.com/@InigoQuilez
-* Adam Millard, the Architect of Games: https://www.youtube.com/@ArchitectofGames
-* GMTK, Game Maker's Toolkit: https://www.youtube.com/@GMTK
-* AI and Games: https://www.youtube.com/@AIandGames
-* The Coding Train; General recreational programming: https://www.youtube.com/@TheCodingTrain
-
-
 Things that don't fit into any category above
 ---------------------------------------------
 
@@ -381,3 +290,4 @@ Things that don't fit into any category above
 * Lots of short videos, at least some of them gamedev-related: https://www.youtube.com/c/Garbaj/videos
 * What went wrong with gaming (marketing)?: https://youtu.be/g16heGLKlTA?t=506
 * Introduction on aerodynamics: https://github.com/barbagroup/AeroPython
+* [How to build a BVH](https://jacco.ompf2.com/2022/04/13/how-to-build-a-bvh-part-1-basics/)
