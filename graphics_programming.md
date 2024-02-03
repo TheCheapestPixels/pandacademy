@@ -169,6 +169,16 @@ move the default camera in that scene graph back by ten units. Running
 this program, you should see a ball with a smiley face on it.
 
 
+### Under the hood
+
+Again, `ShowBase` does A LOT. Let's consider the bits between scene
+graph on one side, and the graphics APIs on the other:
+![Between scene graph and APIs](hello_panda3d/internals.png)
+
+[Here is a program](hello_panda3d/internals.py) that sets it all up
+without resorting to `ShowBase`.
+
+
 Procedural modeling and animation
 ---------------------------------
 
