@@ -178,6 +178,11 @@ graph on one side, and the graphics APIs on the other:
 [Here is a program](hello_panda3d/internals.py) that sets it all up
 without resorting to `ShowBase`.
 
+Some presentations:
+* [Scene Graph](hello_panda3d/scene_graph.pdf)
+* [Graphics engine](hello_panda3d/graphics_engine.pdf)
+(.odp source files are in the `hello_panda3d/` directory.)
+
 
 Procedural modeling and animation
 ---------------------------------
