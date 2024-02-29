@@ -16,12 +16,13 @@ Graphics/Gamedev YouTubers
 * [GDC (Game Developers Conference)](https://www.youtube.com/@Gdconf):
   Talks about the latest technology, and everything else related to the
   work and business of game development.
-* [Acerola](https://www.youtube.com/@Acerola_t)
+* [Acerola](https://www.youtube.com/@Acerola_t): Graphics and the GPU
 * [Sebastian Lague](https://www.youtube.com/@SebastianLague)
 * [Vercidium](https://www.youtube.com/@Vercidium)
 * [Inigo Quilez, "Painting with Maths"](https://www.youtube.com/@InigoQuilez)
 * [Adam Millard, the Architect of Games](https://www.youtube.com/@ArchitectofGames)
 * [GMTK, Game Maker's Toolkit](https://www.youtube.com/@GMTK)
+* [Design Doc](https://www.youtube.com/@DesignDoc)
 * [AI and Games](https://www.youtube.com/@AIandGames)
 * [The Coding Train](https://www.youtube.com/@TheCodingTrain): General recreational programming
 

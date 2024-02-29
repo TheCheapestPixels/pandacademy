@@ -200,6 +200,10 @@ Graphics
   * Relation between eye gaze and foot placement when walking over rough terrain: https://www.sciencedirect.com/science/article/pii/S0960982218303099 
   * Youtube channel about game animation: https://yewtu.be/channel/UCxO_ya-RmAXCXJCU54AxYFw
   * "5 ways to draw an outline": https://alexanderameye.github.io/notes/rendering-outlines/
+* Decals
+  * https://martindevans.me/game-development/2015/02/27/Drawing-Stuff-On-Other-Stuff-With-Deferred-Screenspace-Decals/
+  * https://bartwronski.com/2015/03/12/fixing-screen-space-deferred-decals/
+  * https://www.gamedevs.org/uploads/screenspace-decals-space-marine.pdf
 
 
 Clouds and Water
