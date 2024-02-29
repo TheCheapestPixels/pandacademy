@@ -19,8 +19,6 @@ These courses assume that you...
 These courses are also nowhere near complete yet. The planned curriculum
 is:
 - [X] [Hello Panda3D](hello_panda3d/hello_panda3d.md): Getting the basics out of the way.
-- [ ] [Panda3D GraphicsEngine et al deep dive](cpu_rendering/cpu_rendering.md)
-- [X] [Procedural modeling and animation](geometric_modeling.md) (TODO: lacks shapekeys)
-- [ ] Rendering and shaders (needs refactoring and comments)
-- [ ] A ShowBase-less Hello World to explain what is going on on top of
-      all the rendering stuff
+- [X] [Procedural modeling and animation](./geometric_modeling/geometric_modeling.md) (TODO: lacks shapekeys)
+- [ ] [The CPU side of rendering](./cpu_rendering/cpu_rendering.md): Panda3D's rendering process
+- [ ] [The GPU side of rendering](./gpu_rendering/gpu_rendering.md): The GPU's rendering process

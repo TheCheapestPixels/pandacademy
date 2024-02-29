@@ -49,8 +49,10 @@ a starting point.
 Content
 -------
 
-* [From (nearly) zero to knowing what rendering and shaders are all about](graphics_programming.md):
-  A rough course on the basics of modern realtime computer graphics.
+* [Courses](./courses.md)
+  A rough set of courses on the basics of modern realtime computer
+  graphics.
+
   Instead of loading models and textures from artist-created files like
   a sane person, we create them in code, so as to get to know the data
   structures involved. Then we take a look at how that data is processed
