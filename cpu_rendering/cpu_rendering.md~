@@ -1,13 +1,14 @@
 Again, `ShowBase` does A LOT. Let's consider the bits between scene
 graph on one side, and the graphics APIs on the other:
-![Between scene graph and APIs](./internals.png)
+![Between scene graph and APIs](hello_panda3d/internals.png)
 
-[Here is a program](./internals.py) that sets it all up
+[Here is a program](hello_panda3d/internals.py) that sets it all up
 without resorting to `ShowBase`.
 
 Some presentations:
-* [Scene Graph](./scene_graph.pdf) ([`.odp` source file](./scene_graph.odp))
-* [Graphics engine](./graphics_engine.pdf) ([`.odp` source file](./graphics_engine.odp))
+* [Scene Graph](hello_panda3d/scene_graph.pdf)
+* [Graphics engine](hello_panda3d/graphics_engine.pdf)
+(.odp source files are in the `hello_panda3d/` directory.)
 
 
 ### `render_frame` in detail

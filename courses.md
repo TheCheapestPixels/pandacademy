@@ -1,4 +1,4 @@
-From (nearly) zero to knowing what rendering and shaders are all abouta
+From (nearly) zero to knowing what rendering and shaders are all about
 ======================================================================
 
 These courses assume that you...
