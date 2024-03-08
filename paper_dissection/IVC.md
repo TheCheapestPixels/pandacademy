@@ -19,17 +19,16 @@ This document contains
   session's content, and also explore Panda3D at the same time.
 * Personal notes: Catch-all category for what I have to add.
 
-The intend is two-fold:
+The intend is three-fold:
 * To help me refresh and deepen my knowledge of the basics of computer
   graphics, so as to enable me to do a real deep dive into shaders and
   the innards of Panda3D's renderer.
 * To create a supplement for the course for people who want to learn
-  about Panda3D while taking the IVC course. As I am already codifying
-  my knowledge [here](https://github.com/TheCheapestPixels/pandacademy/tree/IVC),
-  I will link to that resource as heavily as possible. In fact,
-  everything practical in this file will eventually end up in the
-  Pandacademy course, leaving only a few notes and a lot of links, thus
-  providing an alternative partial path through the Pandacademy.
+  about Panda3D while taking the IVC course.
+* I am already codifying my knowledge of Panda3D and computer graphics
+  [here](https://github.com/TheCheapestPixels/pandacademy/tree/IVC).
+  This IVC companion guide is also incubator for further additions to
+  the main Pandacademy material.
 
 Just to be very, VERY clear: Panda3D does and will **not** serve as a
 replacement for POVRay, neither in general nor in the context of IVC.
@@ -64,6 +63,7 @@ That being said: Panda3D
 
 This document is currently in **beta** status: Everything relevant has at least been mentioned, but barely anything up to the intended depth of the topic, with many things indeed only being name-checked.
 
+Cleanup to do:
 - [X] Session 1
 - [ ] Session 2: This should be preceded by a scene graph tutorial, but
       the relevant lecture for that is lecture 3. It should also be
@@ -75,7 +75,17 @@ This document is currently in **beta** status: Everything relevant has at least 
 - [X] Session 5
 - [ ] Session 6: Camera code examples.
 - [ ] Session 7: Ponder intervals
-
+- [X] Session 12
+- [X] Session 13: Missing
+- [X] Session 15: Student project presentations
+- [X] Session 16: Missing / Student project presentations
+- [ ] Session 18: Implement Lambertian, flat shading, Gouraud, Phong.
+- [ ] Session 23
+- [ ] Session 24
+- [X] Session 25
+- [ ] Session 26
+- [X] Session 29: Missing
+- [X] Session 30
 
 
 Session 1
@@ -180,7 +190,7 @@ arrows for transformations within the types of scene descriptions.
 Session 2
 ---------
 
-## Takeaway
+### Takeaway
 
 There are classes of coordinate systems (e.g. cartesian, polar). Within
 each class there are types that define e.g. the relative arrangement of
@@ -255,9 +265,8 @@ Palm-Up Righthanded:
 * Yaw is called heading, and turns around z
 
 Vector formats typically are
-* position: `xyz` (with w being a perspective factor discussed later),
-  but on the GPU, in fragment shaders `xyzw` is used, with `w` being
-  the perspective factor.
+* position: `xyz`, but on the GPU, in fragment shaders `xyzw` is used,
+  with `w` being the perspective factor.
 * rotations: `hpr` order, meaning that they turn around axes `zxy`.
 * colors: `rgb` and `rgba` are the most common ones. `a` stands for
   `alpha` and means opacity, where 1.0 stands for "fully opaque", and
@@ -477,7 +486,7 @@ Session 9
 ### Panda3D
 
 WARNING! Computer graphics may cause photosensitive epilepsy. Please
-read [this article](https://en.wikipedia.org/wiki/Denn%C5%8D_Senshi_Porygon).
+read [this article](https://en.wikipedia.org/wiki/Denn%C5%8D_Senshi_Porygon) before proceeding.
 
 That being said, if your screen supports a high enough framerate, you
 can replicate the experiment with the rotating disc of spectral colors.
@@ -582,9 +591,14 @@ Missing.
 Session 14
 ----------
 
-Windowing
-Clipping
-PBR / NPR
+Okay, terminology...
+* Physics-based rendering (PBR) deals with emulating the physics of
+  light to create a photorealistic image. Currently (early 2024) the
+  texture parametrization for this workflow has settled on [Principled Shading](https://docs.blender.org/manual/en/latest/render/shader_nodes/shader/principled.html).
+* Non-photorealistic rendering (NPR) deals with creating artistic
+  effects. Examples are the imitation of [anime.style drawings](https://www.youtube.com/watch?v=yhGjCzxJV3E),
+  or [dithering](https://www.youtube.com/watch?v=ILolesm8kFY).
+  
 Object/Image space algorithms for occlusion
 Painter's algorithm
 ...and then the sound cuts out.
@@ -612,7 +626,14 @@ Student project presentations
 Session 16
 ----------
 
-# Panda3D
+Video is a duplicate of session 17, there shuld be further student
+project presentations here.
+
+
+Session 17
+----------
+
+### Panda3D
 
 Implementing the fractals is left as an exercise to the reader. How
 about a nice 3D Koch snowflake mesh generator, or a fragment shader for
@@ -622,22 +643,19 @@ Image functions... FIXME: Would this be a good time to talk about
 texture formats?
 
 
-Session 17
-----------
-
-Same as 16???
-
-
 Session 18
 ----------
 
 We will not tackle raytracing here. Or shadows.
 
-FIXME:
-Lambertian diffusion
-Flat shading
-Gouraud shading
-Phong shading
+FIXME: Demonstrate
+* Lambertian diffusion
+* Flat shading
+* Gouraud shading
+* Phong shading
+Relevant:
+* Switch between flat / smooth shading: https://docs.panda3d.org/1.10/python/reference/panda3d.core.ShadeModelAttrib
+* Specify which vertex to take the normal from: https://docs.panda3d.org/1.11/python/reference/panda3d.core.GeomEnums#_CPPv413GeomRendering
 
 
 Session 19
@@ -719,10 +737,11 @@ FIXME
 Session 23
 ----------
 
-Post-processing, FilterManager
-Metrics also pop up in Search.
-FIXME: Rewatch. Probably mention saving images, and processing them in
-compute shaders.
+FIXME:
+* saving images
+* Post-processing, FilterManager
+* compute shaders
+* Metrics also pop up in Search.
 
 
 Session 24

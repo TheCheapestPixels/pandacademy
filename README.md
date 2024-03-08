@@ -45,10 +45,13 @@ are (or seem to be) interesting, and a bunch of example code that begins
 to congeal into a course on the basics of graphics programming. But it's
 a starting point.
 
+For details, see the TODO list below.
+
 
 Content
 -------
 
+* [History](./history.md)
 * [Courses](./courses.md)
   A rough set of courses on the basics of modern realtime computer
   graphics.
@@ -69,9 +72,13 @@ Content
 TODO
 ----
 
-* [From (nearly) zero to knowing what rendering and shaders are all about](graphics_programming.md)
-  needs to have its Panda3D-centric parts split out into its own
-  courses.
+* [ ] History: Sketches.
+* [ ] Courses: See there.
+* [ ] Noise: Working code, but that's it.
+* [X] Papers and Talks: Basically a dumping ground in working condition.
+* [X] Other people's content: Same.
+* [ ] Paper Dissection: Totally unintegrated.
+* [ ] Preparatory course on math and coding: Nothing so far
 
 
 NOTES
