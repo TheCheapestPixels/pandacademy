@@ -61,7 +61,7 @@ Content
   structures involved. Then we take a look at how that data is processed
   on the GPU. We round it out with a look at the infrastructure that
   turns it all into a cohesive engine.
-* [Noise](noise.md): Notes on noise, e.g. Perlin, Worley, PSRD.
+* [Noise](./noise/noise.md): Notes on noise, e.g. Perlin, Worley, PSRD.
 * [Papers and Talks](papers_and_talks.md): A collection of, and notes
   on, academic papers, blog posts, video presentations, and
   conference-style talks.

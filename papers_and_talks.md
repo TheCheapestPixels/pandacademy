@@ -141,7 +141,7 @@ Procedural Generation
 ### Aurora Borealis / Australis
 
 * "Simulating the Aurora Borealis": https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=f3bfb057bb50e020b7a14eb42cf97b562e169635
-  See [Aurora paper dissections](paper_dissections/aurora.md)
+  See [Aurora paper dissections](paper_dissection/aurora.md)
 * "Interactive Volume Rendering Aurora on the GPU": https://otik.uk.zcu.cz/bitstream/11025/1242/1/Lawlor.pdf
   See [Aurora paper dissections](paper_dissections/aurora.md)
 * "Aurora Rendering with Sheet Modeling Technique": http://www.cs.rpi.edu/~cutler/classes/advancedgraphics/S09/final_projects/ng.pdf

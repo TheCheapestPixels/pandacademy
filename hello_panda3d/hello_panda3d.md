@@ -20,47 +20,8 @@ TODO: dev version builds
 
 ### The smallest possible program
 
-```python
-from direct.showbase.ShowBase import ShowBase
-
-
-ShowBase()
-base.run()
-```
-
-Okay, confession time: This program does some weird stuff, and that I
-have to say this about the very first and most basic Panda3D program
-sure does not bode well.
-
-For context: There are two modules in the Panda3D Python package:
-* `panda3d` contains all the things that are implemented in C++, and
-  wrapped with a Python API. If something is performance-critical, it
-  should probably go here.
-* `direct` contains tools implemented in Python, many of which build
-  on `panda3d`. The code that speeds up development right up to enabling
-  live coding lives here.
-
-`ShowBase` is the central workhorse of most Panda3D applications, and
-can be thought of as "The Engine". When you instantiate it, you will see
-a window pop up which, right now, will be black. When running
-`base.run()`, it will turn grey, as rendering now happens, and you are
-staring into empty space where emptiness shows up in grey.
-
-If you are using an IDE to code along, you will have noticed that it
-freaks out at the mention of `base`, and maybe your brain did, too.
-After all, where does *that* come from?
-
-When `ShowBase` is instantiated, it stores a reference to itself in
-`__builtins__` under the name `base`. `__builtins__` is where Python
-keeps its built-in functions, constants, types, etc., e.g. `str`, `zip`,
-`open`, `False`, `SyntaxError`. That means that after instantiation, we
-can use `base` to refer to the object we just created, and do so from
-any part of our application's code. On one hand, this leads to code that
-is much easier to write and read, as we do not need to drag a reference
-to it around in other ways. On the other, it means that we won't be
-able to create a second or third instance of `ShowBase`. On the third
-hand, people who have strongly ingrained notions about what constitutes
-clean code have already stopped reading a while ago.
+[`main_basic.py`](./main_basic.py) shows how to get Panda3D ready to
+work, and start that work.
 
 
 ### A slightly more complex program
