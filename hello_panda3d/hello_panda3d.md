@@ -38,10 +38,10 @@ that keeps Panda3D programs together.
   ----------------------------------------------------------------------
    resetPrevTransform     -51  Updates NodePaths; Their current
                                transformation becomes that of the last
-			       frame.
+                               frame.
    dataLoop               -50  Processes changes / events from outside
                                of Panda3D, like window movements or
-			       input devices.
+                               input devices.
    eventManager             0  Dispatches events
    ivalLoop                20  Progresses Intervals
    collisionLoop           30  ShowBase's hook for a collision traverser
