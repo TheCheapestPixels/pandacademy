@@ -194,6 +194,15 @@ Graphics
 * Physics-based Rendering
   * Disney PBR paper: https://disney-animation.s3.amazonaws.com/library/s2012_pbs_disney_brdf_notes_v2.pdf
   * Epic PBR Siggraph presentation: https://cdn2.unrealengine.com/Resources/files/2013SiggraphPresentationsNotes-26915738.pdf
+* Shadows
+  * [Percentage-Closer Soft Shadows](https://developer.download.nvidia.com/shaderlibrary/docs/shadow_PCSS.pdf)
+  * [Variance Shadow Mapping](https://developer.download.nvidia.com/SDK/10/direct3d/Source/VarianceShadowMapping/Doc/VarianceShadowMapping.pdf)
+  * [Exponential Shadow Maps](https://jankautz.com/publications/esm_gi08.pdf)
+  * [Light Space Perspective Shadow Maps](https://diglib.eg.org/bitstream/handle/10.2312/EGWR.EGSR04.143-151/143-151.pdf)
+  * [Cascaded Shadow Mapping](https://learnopengl.com/Guest-Articles/2021/CSM)
+  * [Stochastic Soft Shadow Mapping](https://cg.ivd.kit.edu/publications/2015/sssm/StochasticSoftShadows.pdf)
+  * Screen Space Ambient Occlusion
+  * Temporal Anti-Aliasing can be applied to shadow maps, too.
 * Animation
   * AI learns martial arts from motion capture data: https://www.youtube.com/watch?v=t33jvL7ftd4
   * Advanced IK techniques: https://www.youtube.com/watch?v=KLjTU0yKS00

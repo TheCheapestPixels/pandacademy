@@ -52,7 +52,7 @@ Content
 -------
 
 * [History](./history.md)
-* [Courses](./courses.md): Terse explanations around Lavishly commented
+* [Courses](./courses.md): Terse explanations around lavishly commented
   programs, explaining the basics of modern realtime computer graphics,
   and how they are used in and through Panda3D.
 * [Presentations slides](./presentations/presentations.md): Basically
