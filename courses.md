@@ -18,7 +18,28 @@ These courses assume that you...
 
 These courses are also nowhere near complete yet. The planned curriculum
 is:
-- [X] [Hello Panda3D](hello_panda3d/hello_panda3d.md): Getting the basics out of the way.
-- [X] [Procedural modeling and animation](./geometric_modeling/geometric_modeling.md) (TODO: lacks shapekeys)
-- [ ] [The CPU side of rendering](./cpu_rendering/cpu_rendering.md): Panda3D's rendering process
-- [ ] [The GPU side of rendering](./gpu_rendering/gpu_rendering.md): The GPU's rendering process
+- [ ] Preparatory courses: The requirements above are a bit harsh, and
+      contain interesting topics that *should* be explained here; In
+      particular:
+      * Links to outside material like programming courses and
+        installation guides
+      * Math, applied in Panda3D
+- [ ] The tools of the trade: An overview of what you need to know to
+      understand how modern computer graphics work.
+      - [X] [Hello Panda3D](hello_panda3d/hello_panda3d.md): Getting the
+            basics out of the way.
+      - [ ] [Geometric Modeling](./geometric_modeling/geometric_modeling.md):
+            A deeper look into meshes, animations, and textures.
+            
+            TODO: lacks shapekeys
+      - [ ] [The CPU side of rendering](./cpu_rendering/cpu_rendering.md):
+            Panda3D's rendering process. Includes a closer look at the
+            setup and working of the rendering process which culminates
+            in the use of the GPU.
+      - [ ] [The GPU side of rendering](./gpu_rendering/gpu_rendering.md):
+            This explains what happens when the rendering process hits
+            the metal, and how we control it with shaders.
+            
+            TODO: Full refactor.
+- [ ] Rendering pipelines: Forward Shading, Deferred Shading, hybrids
+- [ ] The science of light and color: Physics-based Rendering (PBR)

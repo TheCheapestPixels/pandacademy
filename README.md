@@ -52,15 +52,12 @@ Content
 -------
 
 * [History](./history.md)
-* [Courses](./courses.md)
-  A rough set of courses on the basics of modern realtime computer
-  graphics.
-
-  Instead of loading models and textures from artist-created files like
-  a sane person, we create them in code, so as to get to know the data
-  structures involved. Then we take a look at how that data is processed
-  on the GPU. We round it out with a look at the infrastructure that
-  turns it all into a cohesive engine.
+* [Courses](./courses.md): Terse explanations around Lavishly commented
+  programs, explaining the basics of modern realtime computer graphics,
+  and how they are used in and through Panda3D.
+* [Presentations slides](./presentations/presentations.md): Basically
+  the target of a metaphorical cross-compilation from the
+  above-mentioned courses to slide deck presentations.
 * [Noise](./noise/noise.md): Notes on noise, e.g. Perlin, Worley, PSRD.
 * [Papers and Talks](papers_and_talks.md): A collection of, and notes
   on, academic papers, blog posts, video presentations, and
@@ -72,24 +69,25 @@ Content
 TODO
 ----
 
-* [ ] History: Sketches.
+* [ ] History: This is just a sketch.
 * [ ] Courses: See there.
-* [ ] Noise: Working code, but that's it.
+* [ ] Presentations: Just fragments so far.
+* [ ] Noise: Working code, but that's it. This should become a course.
 * [X] Papers and Talks: Basically a dumping ground in working condition.
-* [X] Other people's content: Same.
-* [ ] Paper Dissection: Totally unintegrated.
-* [ ] Preparatory course on math and coding: Nothing so far
+      Further papers will be added as I discover them, notes on their
+      content go into the "Paper Dissection" category, and as they form
+      more fully rounded explanations of a topic (and get implemented),
+      new courses to contain those topics can be created.
+
+      As such, this document being in flux is its intended state.
+* [ ] Paper Dissection: Totally unintegrated. As mentioned above, this
+      is the mulch from which courses and code grow.
+* [X] Other people's content: Another dumping ground.
 
 
 NOTES
 -----
 
-* Scene graph
-  * Relative spatial arrangement of nodes
-  * Render attributes
-* Object basics
-  * Geom is geometry + animation (what else?)
-  * Texture is metadata plus ram image in VRAM
 * Advanced rendering techniques
   * PBR: Throw lots of optics-derived math at your lightning model.
     The current champion is the Disney's Principled BSDF.

@@ -5,10 +5,6 @@ graph on one side, and the graphics APIs on the other:
 [Here is a program](./internals.py) that sets it all up
 without resorting to `ShowBase`.
 
-Some presentations:
-* [Scene Graph](./scene_graph.pdf) ([`.odp` source file](./scene_graph.odp))
-* [Graphics engine](./graphics_engine.pdf) ([`.odp` source file](./graphics_engine.odp))
-
 
 ### `render_frame` in detail
 

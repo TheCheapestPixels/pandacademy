@@ -1,7 +1,6 @@
 Rendering and Shaders
 ---------------------
 
-TODO: Full refactor. We have these files:
 * [Minimal shader example](shaders/minimal/shader.py) demonstrates
   vertex and fragment shader. That is sufficient to explain the default
   shading pipeline, and show off first tricks.
