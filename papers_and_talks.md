@@ -113,7 +113,7 @@ Procedural Generation
 * "Generating Compelling Procedural 3D Environments and Landscapes": https://odr.chalmers.se/items/fbecc575-1358-4d5d-a35f-1b2af96e4763/full
 * "A Review of Digital Terrain Modeling": https://hal.science/hal-02097510v1/document
 * "A 3D visualisation environment modelling the evolution of north-west Europe since the Last Glacial Maximum": https://diglib.eg.org/bitstream/handle/10.2312/LocalChapterEvents.TPCG.TPCG07.229-235/229-235.pdf?sequence=1&isAllowed=y
-
+* "Landlab: A modular Earth Surface Dynamics modeling library" https://landlab.readthedocs.io/en/latest/#
 
 ### Cities and Buildings
 
