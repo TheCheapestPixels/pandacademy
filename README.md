@@ -96,6 +96,9 @@ NOTES
   * SDR / HDR
     * SDR: Keep values in the [0.0, 1.0] range
     * HDR: Use open values for total intensity, then tonemap them.
+  * [Unity's HDRP](https://forum.unity.com/proxy.php?image=https%3A%2F%2Fdocs.unity3d.com%2FPackages%2Fcom.unity.render-pipelines.high-definition%4010.2%2Fmanual%2Fimages%2FHDRP-frame-graph-diagram.png&hash=45c11349f9bb3a524fabfc91bcaf9f2e)
+* Color
+  * [CIE 1931 / XYZ](https://en.wikipedia.org/wiki/CIE_1931_color_space)
 * Noise
   * https://github.com/stegu
   * https://github.com/tuxalin/procedural-tileable-shaders
