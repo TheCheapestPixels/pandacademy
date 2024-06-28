@@ -39,6 +39,12 @@ Behavior Trees": https://lornat75.github.io/papers/2019/colledanchise-iros.pdf
       longer receive ticks.
     * Defines `ParallelSyncRelative` that ticks children so as to keep
       the slowest within a given range of the fastest.
+  * "EvolvingBehavior: Towards Co-Creative Evolution of Behavior Trees for Game NPCs": https://arxiv.org/pdf/2209.01020.pdf
+  * "Handling Concurrency in Behavior Trees": https://arxiv.org/pdf/2110.11813.pdf
+* Other
+  * "Parameterizing Behavior Trees": Treating BTs more like functions.
+  * "A survey of Behavior Trees in robotics and AI"
+  * "Generative Agents: Interactive Simulacra of Human Behavior": https://dl.acm.org/doi/pdf/10.1145/3586183.3606763
 
 
 ### HTN: Hierarchical Task Networks
