@@ -73,18 +73,18 @@ void main() {
   vec4 new_cell = vec4(new_state, 0, 0, 1);
   // vec4 new_cell = vec4(myself.r, 0, 0, 1);
   imageStore(toTex, coord, new_cell);
-  memoryBarrierImage();
-  imageStore(fromTex, coord, new_cell);
+  //   memoryBarrierImage();
+  //   imageStore(fromTex, coord, new_cell);
 }
 """
 
 
 class GameOfLife:
-    def __init__(self, resolution=64, workgroup_size=16):
+    def __init__(self, resolution=64, workgroup_size=16, random_noise=True):
         self.resolution = resolution
         self.workgroup_size = workgroup_size
-        self.image_in, self.texture_in = self.make_texture(random_noise=False)
-        self.image_out, self.texture_out = self.make_texture()
+        self.image_in, self.texture_in = self.make_texture()
+        self.image_out, self.texture_out = self.make_texture(random_noise=random_noise)
         self.setup_shader()
 
     def make_texture(self, random_noise=False):
@@ -140,10 +140,20 @@ class GameOfLife:
         compute_np.set_shader_input("toTex", self.texture_out)
         self.compute_np = compute_np
 
-    def shade(self, nodepath):
+    def shade(self, nodepath, swap_tex_at=0):
         self.nodepath = nodepath
         nodepath.set_texture(self.texture_in)
         self.compute_np.reparent_to(nodepath)
+        base.task_mgr.add(self.swap_textures, sort=swap_tex_at)
+
+    def swap_textures(self, task):
+        old_tex_in = self.texture_in
+        old_tex_out = self.texture_out
+        self.texture_in = old_tex_out
+        self.texture_out = old_tex_in
+        self.compute_np.set_shader_input("fromTex", self.texture_in)
+        self.compute_np.set_shader_input("toTex", self.texture_out)
+        return task.cont
 
 
 ShowBase()
@@ -151,9 +161,9 @@ base.cam.set_pos(0.5, -2.0, 0.5)
 base.accept('escape', base.task_mgr.stop)
 base.set_frame_rate_meter(True)
 
-game_of_life = GameOfLife(resolution=128)
+game_of_life = GameOfLife(resolution=256, random_noise=True)
 cm = CardMaker('card')
 card = render.attach_new_node(cm.generate())
-game_of_life.shade(card)
+game_of_life.shade(card, swap_tex_at=0)
 
 base.run()
