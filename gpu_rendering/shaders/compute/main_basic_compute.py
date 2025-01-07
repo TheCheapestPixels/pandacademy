@@ -36,7 +36,7 @@ from direct.showbase.ShowBase import ShowBase
 
 
 # As usual, we will keep it simple. Specifically, we will use the
-# example shader from Panda3D's manual, and get to actually run.
+# example shader from Panda3D's manual, and get it to actually run.
 # The shader requires two textures, one to get data into the shader, and
 # one to get data out of it again without overwriting the original. The
 # shader itself will be run once per texel, will load "its" texel's
@@ -54,37 +54,48 @@ image_in.clear(
     num_channels=4,  # RGBA means four channels
 )
 image_in.fill(Vec4(1, 0, 0, 1))  # We fill the image red.
-texture_in = Texture('')
-texture_in.setup_2d_texture(
-    image_in.get_x_size(),
-    image_in.get_y_size(),
-    Texture.T_float,  # Components will be 32 bit floats.
-    Texture.F_rgba32,  # Four 32 bit floats make one texel.
-)
-texture_in.load(image_in)
 
-# ...and the second texture, nearly identical.
-image_out = PfmFile()
-image_out.clear(
-    x_size=resolution,
-    y_size=resolution,
-    num_channels=4,
-)
-image_out.fill(Vec4(0, 0, 0, 1))  # Right now, this texture is black.
+# Texture setup is super simple right now...
+texture_in = Texture('')
+texture_in.load(image_in)
+# ...but since all attributes of the texture are now taken from the
+# loaded image, and since PfmFile defaults to an rgba16 format, the
+# shader, expecting rgba32, will do weird things to the data. This is
+# easily remedied by setting the proper format, but forgetting it is a
+# super-annoying source for bugs.
+texture_in.set_format(Texture.F_rgba32)
+
+# Next comes the output texture, which we create "the other way",
+# without relying on an image for the initial state.
 texture_out = Texture('')
 texture_out.setup_2d_texture(
-    image_out.get_x_size(),
-    image_out.get_y_size(),
+    resolution,
+    resolution,
     Texture.T_float,
     Texture.F_rgba32,
 )
-texture_out.load(image_out)
+# We still do need to create *a* state, though, so that the memory is
+# allocated.
+texture_out.set_clear_color((0,0,0,0))
+
+# Lastly, we need an image to then dump the output texture data into.
+image_out = PfmFile()
+# Since we will read from this image before the its content is loaded
+# from the texture, we do have to make the image allocate its memory,
+# too. If you are sure that you will not do such an early read in your
+# program, you can simply skip this step, as `texture.store(image)` will
+# take care of it, just as loading from an image sets up a texture.
+image_out.clear(
+    x_size=texture_out.get_x_size(),
+    y_size=texture_out.get_y_size(),
+    num_channels=4,
+)
 
 # Now for the shader, which we'll write in GLSL.
 shader_source = """#version 430
 
 // Here we define the workgroup size. When we later dispatch the shader
-// (send it off to be run), it will be done so in groups of 16x16.
+// (send it off to be run), it will be done so in groups of 16x16x1.
 layout (local_size_x = 16, local_size_y = 16) in;
 
 // The shader needs to know about the textures' formats to process the
@@ -137,7 +148,7 @@ base.graphicsEngine.dispatch_compute(
 )
 # A word about timing: If you are using the multithreaded pipeline, then
 # there might be a frame being rendered right now. In that case,
-# `dispatch_compile` will wait until the rendering has finished, and
+# `dispatch_compute` will wait until the rendering has finished, and
 # then submit the job before returning. That also means that this code
 # right here will be stalled until then.
 
