@@ -163,13 +163,14 @@ class GameOfLife:
                 for y in range(self.resolution):
                     image.set_point(x, y, random.randint(0, 1))
         texture = Texture('')
-        texture.setup_2d_texture(
-            image.get_x_size(),
-            image.get_y_size(),
-            Texture.T_float,
-            Texture.F_rgba32,
-        )
+        # texture.setup_2d_texture(
+        #     image.get_x_size(),
+        #     image.get_y_size(),
+        #     Texture.T_float,
+        #     Texture.F_rgba32,
+        # )
         texture.load(image)
+        texture.set_format(Texture.F_rgba32)
         from panda3d.core import SamplerState
         texture.set_magfilter(SamplerState.FT_nearest)
         return (image, texture)
