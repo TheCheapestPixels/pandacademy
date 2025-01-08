@@ -186,7 +186,11 @@ class GameOfLife:
         # do actually want this node in the scene, so that the shader is
         # invoked automatically during rendering...
         node = ComputeNode("compute")
-        node.add_dispatch(16, 16, 1)
+        node.add_dispatch(
+            self.resolution // 16,
+            self.resolution // 16,
+            1,
+        )
         compute_np = NodePath(node)
         compute_np.set_shader(self.shader)
         compute_np.set_shader_input("fromTex", self.texture_in)
@@ -219,7 +223,7 @@ base.accept('escape', base.task_mgr.stop)
 base.set_frame_rate_meter(True)
 
 # This is where you fiddle with parameters for fun.
-game_of_life = GameOfLife(resolution=256, pattern=Pattern.RANDOM)
+game_of_life = GameOfLife(resolution=1024, pattern=Pattern.RANDOM)
 cm = CardMaker('card')
 card = render.attach_new_node(cm.generate())
 game_of_life.shade(card, swap_tex_at=0)
