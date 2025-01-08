@@ -30,6 +30,7 @@ from panda3d.core import PNMImage
 from panda3d.core import PfmFile
 from panda3d.core import TextureStage
 from panda3d.core import Texture
+from panda3d.core import SamplerState
 
 from direct.showbase.ShowBase import ShowBase
 
@@ -39,7 +40,41 @@ class Pattern(Enum):
     RANDOM = 1
     SPINNER = 2
     GLIDER = 3
-    PENTOMINO = 4
+    R_PENTOMINO = 4
+
+
+def make_initial_image(resolution, pattern):
+    image = PfmFile()
+    image.clear(
+        x_size=resolution,
+        y_size=resolution,
+        num_channels=4,
+    )
+    image.fill(Vec4(0, 0, 0, 1))
+    offset = resolution // 2
+    if pattern == Pattern.BLANK:
+        pass
+    elif pattern == Pattern.SPINNER:
+        image.set_point(offset - 1, offset, 1)
+        image.set_point(offset    , offset, 1)
+        image.set_point(offset + 1, offset, 1)
+    elif pattern == Pattern.GLIDER:
+        image.set_point(offset - 1, offset    , 1)
+        image.set_point(offset    , offset + 1, 1)
+        image.set_point(offset + 1, offset - 1, 1)
+        image.set_point(offset + 1, offset    , 1)
+        image.set_point(offset + 1, offset + 1, 1)
+    elif pattern == Pattern.R_PENTOMINO:
+        image.set_point(offset - 1, offset    , 1)
+        image.set_point(offset - 1, offset + 1, 1)
+        image.set_point(offset    , offset - 1, 1)
+        image.set_point(offset    , offset    , 1)
+        image.set_point(offset + 1, offset    , 1)
+    else:  # Pattern.RANDOM
+        for x in range(resolution):
+            for y in range(resolution):
+                image.set_point(x, y, random.randint(0, 1))
+    return image
 
 
 shader_source = """#version 430
@@ -139,72 +174,43 @@ void main() {
 class GameOfLife:
     def __init__(self, resolution=64, pattern=Pattern.RANDOM):
         self.resolution = resolution
-        self.image_in, self.texture_in = self.make_texture(Pattern.BLANK)
-        self.image_out, self.texture_out = self.make_texture(pattern)
-        self.setup_shader()
+        image_in = make_initial_image(self.resolution, pattern)
+        self.texture_in = Texture('')
+        self.texture_in.load(image_in)
+        self.texture_in.set_format(Texture.F_rgba32)
+        self.texture_in.set_magfilter(SamplerState.FT_nearest)
 
-    def make_texture(self, pattern):
-        image = PfmFile()
-        image.clear(
-            x_size=self.resolution,
-            y_size=self.resolution,
-            num_channels=4,
-        )
-        image.fill(Vec4(0, 0, 0, 1))
-        offset = self.resolution // 2
-        if pattern == Pattern.BLANK:
-            pass
-        elif pattern == Pattern.SPINNER:
-            image.set_point(offset - 1, offset, 1)
-            image.set_point(offset    , offset, 1)
-            image.set_point(offset + 1, offset, 1)
-        elif pattern == Pattern.GLIDER:
-            image.set_point(offset - 1, offset    , 1)
-            image.set_point(offset    , offset + 1, 1)
-            image.set_point(offset + 1, offset - 1, 1)
-            image.set_point(offset + 1, offset    , 1)
-            image.set_point(offset + 1, offset + 1, 1)
-        elif pattern == Pattern.PENTOMINO:
-            image.set_point(offset - 1, offset    , 1)
-            image.set_point(offset - 1, offset + 1, 1)
-            image.set_point(offset    , offset - 1, 1)
-            image.set_point(offset    , offset    , 1)
-            image.set_point(offset + 1, offset    , 1)
-        else:  # Pattern.RANDOM
-            for x in range(self.resolution):
-                for y in range(self.resolution):
-                    image.set_point(x, y, random.randint(0, 1))
-        texture = Texture('')
-        texture.setup_2d_texture(
-            image.get_x_size(),
-            image.get_y_size(),
+        self.texture_out = Texture('')
+        self.texture_out.setup_2d_texture(
+            resolution,
+            resolution,
             Texture.T_float,
             Texture.F_rgba32,
         )
-        texture.load(image)
-        from panda3d.core import SamplerState
-        texture.set_magfilter(SamplerState.FT_nearest)
-        return (image, texture)
+        self.texture_out.set_magfilter(SamplerState.FT_nearest)
+        self.setup_shader()
 
     def setup_shader(self):
         for idx, line in enumerate(shader_source.split('\n')):
-            print(f"{idx:03} {line}")
+            print(f"{idx+1:03} {line}")
         self.shader = Shader.make_compute(
             Shader.SL_GLSL,
             shader_source,
         )
         node = ComputeNode("compute")
-        node.add_dispatch(16, 16, 1)
+        node.add_dispatch(
+            self.resolution // 16,
+            self.resolution // 16,
+            1,
+        )
         compute_np = NodePath(node)
         compute_np.set_shader(self.shader)
-        compute_np.set_shader_input("fromTex", self.texture_in)
-        compute_np.set_shader_input("toTex", self.texture_out)
         self.compute_np = compute_np
 
-    def shade(self, nodepath, swap_tex_at=0):
+    def shade(self, nodepath, swap_tex_at=55):
         self.nodepath = nodepath
-        nodepath.set_texture(self.texture_in)
         self.compute_np.reparent_to(nodepath)
+        self.connect_textures()
         base.task_mgr.add(self.swap_textures, sort=swap_tex_at)
 
     def swap_textures(self, task):
@@ -212,10 +218,13 @@ class GameOfLife:
         old_tex_out = self.texture_out
         self.texture_in = old_tex_out
         self.texture_out = old_tex_in
+        self.connect_textures()
+        return task.cont
+
+    def connect_textures(self):
         self.compute_np.set_shader_input("fromTex", self.texture_in)
         self.compute_np.set_shader_input("toTex", self.texture_out)
         self.nodepath.set_texture(self.texture_in)
-        return task.cont
 
 
 ShowBase()
@@ -223,9 +232,9 @@ base.cam.set_pos(0.5, -2.0, 0.5)
 base.accept('escape', base.task_mgr.stop)
 base.set_frame_rate_meter(True)
 
-game_of_life = GameOfLife(resolution=256, pattern=Pattern.RANDOM)
+game_of_life = GameOfLife(resolution=128, pattern=Pattern.RANDOM)
 cm = CardMaker('card')
 card = render.attach_new_node(cm.generate())
-game_of_life.shade(card, swap_tex_at=0)
+game_of_life.shade(card)
 
 base.run()
