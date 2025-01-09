@@ -1,3 +1,5 @@
+# Again, all the magic and its commentary is in the shader.
+
 import random
 from enum import Enum
 
@@ -129,7 +131,7 @@ void preloadTile(image2D tex) {
   // Since all the hard work is done already...
   loadToTile(tex, baseIndex);
   loadToTile(tex, baseIndex + 1);
-  // And now we need to synchronize the invocations in ths workgroup.
+  // And, again, synchronize the workgroup.
   barrier();
 }
 

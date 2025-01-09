@@ -154,7 +154,6 @@ void main() {
   // offset.
   ivec2 coord = ivec2(gl_LocalInvocationID.xy);
   bool amAlive = fetchTile(coord) == 1.0;
-  // ...and how many neighbors are?
   float neighs = fetchTile(coord + bottomLeft) +
                  fetchTile(coord + bottomMiddle) +
                  fetchTile(coord + bottomRight) +
