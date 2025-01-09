@@ -68,20 +68,23 @@ texture_in.set_format(Texture.F_rgba32)
 # Next comes the output texture, which we create "the other way",
 # without relying on an image for the initial state.
 texture_out = Texture('')
+# However, right now the texture has no properties, and thus can't be
+# bound to a shader. So let's give it its properties.
 texture_out.setup_2d_texture(
     resolution,
     resolution,
     Texture.T_float,
     Texture.F_rgba32,
 )
-# We still do need to create *a* state, though, so that the memory is
-# allocated.
-texture_out.set_clear_color((0,0,0,0))
+# Since we will read from the texture before its intended content has
+# been downloaded from the GPU, we still have to give it *a* state,
+# so that the memory is allocated.
+texture_out.set_clear_color((0, 0, 0, 0))
 
 # Lastly, we need an image to then dump the output texture data into.
 image_out = PfmFile()
-# Since we will read from this image before the its content is loaded
-# from the texture, we do have to make the image allocate its memory,
+# Again we will read from this image before the its content is loaded
+# from the texture, and thus have to make the image allocate its memory,
 # too. If you are sure that you will not do such an early read in your
 # program, you can simply skip this step, as `texture.store(image)` will
 # take care of it, just as loading from an image sets up a texture.
