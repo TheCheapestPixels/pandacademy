@@ -30,6 +30,9 @@ course is to explain the rendering process? Because...
 * compute shaders are ubiquitous these days for processing data that
   will eventually wind up in the rendering process or even game
   mechanics.
+* apparently they are *so* popular that some engines have stopped using
+  the rasterizer pipeline at all, opting to do even these tasks in
+  compute shaders.
 
 The [first example](shaders/compute/main_basic_compute.py) that we will
 go over shows how we
@@ -66,6 +69,9 @@ Graphical Shaders
 * [All-stages example](shaders/all_stages/shader.py)
   * all five rendering shaders in action
   * hardware instancing.
+* [Pandytoy](pandatoy/main.py) is a small tool akin to the website
+  [Shadertoy](https://www.shadertoy.com/), albeit with a much reduced
+  feature set.
 
 
 Notes
