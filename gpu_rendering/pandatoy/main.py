@@ -1,17 +1,15 @@
-# This sample serves several purposes:
-# * Demonstrate a slightly different code style from most Panda3D
-#   examples.
-# * Give people new to Panda3D a way to dive right into basic shader
+# Pandatoy serves two main purposes:
+# * Giving people new to Panda3D a way to dive right into basic shader
 #   development.
 # * Help people used to shadertoy.com an easier way to transition to
-#   Panda3D. (Note: This is NOT a drop-in replacement for shadertoy.)
-# * Sneaking it past rdb that I'm actually just dropping a cool toy into
-#   the samples folder.
+#   Panda3D. (Note: This is NOT a drop-in replacement for shadertoy,
+#   though I would be interested in the feedback from its users.)
 #
 # What it does is:
-# * Cover the window in a quad and apply a shader to it.
-# * Monitor the shader source files, and update the shader when they are
-#   updated.
+# * Cover the window in a quad and apply a shader to it, giving you a
+#   canvas to do math on.
+# * Monitor the shader source files, and hotload the shader when they
+#   are updated.
 # * Provide some hotkeys:
 #   `f`: Toggle fullscreen mode and hide the mouse while in it.
 #   `r`: Restart time (or rather the task generating the shader inputs).
@@ -23,7 +21,9 @@
 # * `pandatoy.frag`, the fragment shader, is the file you'd typically
 #   play around with.
 # * Other files can be used by specifying them on the command line, e.g.
-#   `python main.py --fragment pretty_circles.frag`
+#   `python main.py --fragment pretty_circles.frag`, so instead of
+#   editing `pandatoy.frag` directly, your first step can be to copy it
+#   and then work on the copy.
 #
 # What GLSL variables pandatoy provides:
 # * Panda3D's suite of automatic inputs
@@ -49,8 +49,6 @@ from panda3d.core import Vec3
 from panda3d.core import WindowProperties
 
 
-# One big advantage of Panda3D over some engines is that you have full
-# access to all of Python's ecosystem of tools and libraries.
 parser = argparse.ArgumentParser(
     description="Displays your shader on a window-filling quad. Press `f` to toggle fullscreen, `escape` to quit.",
 )
@@ -71,19 +69,11 @@ parser.add_argument(
 args = parser.parse_args()
 
 
-# Most of Panda3D's samples and tutorials make their application class
-# inherit `ShowBase`. While not inherently harmful, it is also
-# unnecessary, and frankly inelegant, as it mixes up the game engine
-# with the game itself. In my not so humble opinion, accessing the
-# `ShowBase` instance via `base`, the builtin created when `ShowBase` is
-# instanced, leads to more elegant source code, and defers the need to
-# use object orientation.
 ShowBase()
 base.accept('escape', base.task_mgr.stop)
 base.disableMouse()
 
 
-# In this specific case though, that deferment does not last long.
 class Manager:
     def __init__(self, vertex_shader_file, fragment_shader_file):
         self.shader_files = dict(
