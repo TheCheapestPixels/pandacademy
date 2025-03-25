@@ -69,9 +69,12 @@ Graphical Shaders
 * [All-stages example](shaders/all_stages/shader.py)
   * all five rendering shaders in action
   * hardware instancing.
-* [Pandytoy](pandatoy/main.py) is a small tool akin to the website
+* [Pandatoy](pandatoy/main.py) is a small tool akin to the website
   [Shadertoy](https://www.shadertoy.com/), albeit with a much reduced
   feature set.
+* [HotShader](pandatoy/hotshader.py) is a cut-down version of Pandatoy
+  that you can plug into your own programs to shade arbitrary objects,
+  and have the same hotload functionality.
 
 
 Notes
