@@ -47,6 +47,33 @@ Behavior Trees": https://lornat75.github.io/papers/2019/colledanchise-iros.pdf
   * "Generative Agents: Interactive Simulacra of Human Behavior": https://dl.acm.org/doi/pdf/10.1145/3586183.3606763
 
 
+### Utility AI
+
+* Utility AI
+  * The AI selects an Option from a set of Options, each of which have a set of Considerations.
+  * The Considerations model aspects of the usefulness (utility) of the Option.
+  * The weights of an Option's Considerations are multiplied, resulting in the Option's weight.
+  * The selection can take many forms.
+    * The final choice is usually done by weighted random selection.
+    * To eliminate low-weight Options, the n highest-weighted Options can be pre-selected.
+    * Alternatively, Options with a weight lower than x% of the highest-weighted Option can be eliminated.
+* [Dual-Utility Reasoning](https://www.gameaipro.com/GameAIPro2/GameAIPro2_Chapter03_Dual-Utility_Reasoning.pdf)
+  * "Absolute utility": AI chooses the option with the highest utility. Overly predictable.
+  * "Relative utility": AI chooses randomly from weighted options. Overly random.
+  * "Dual utility":
+    * Options have rank and weight.
+      * First, the Options with the highest rank with non-zero weight are selected.
+      * Among those, one is chosen randomly, taking the weights into consideration.
+      * Optionally, in the second step, Options with a weight significantly lower than the largest one can be eliminated.
+    * Considerations have rank, weight, and bonus.
+      * Typically there is a TuningConsideration with rank 0.0, weight 1.0, bonus 1.0.
+      * An Option's rank is the highest rank among those of its Considerations.
+      * An Option's weight is the product of the weights of the Considerations, times the sum of boni.
+      * Except for the TuningConsideration, bonus is usually 0.0.
+* [Design Patterns for the Configuration of Utility-Based AI](https://course.khoury.northeastern.edu/cs5150f13/readings/dill_designpatterns.pdf)
+  * Based on the DualUtility Reasoner.
+  * Introduces a set of Considerations with wide applicability in shaping utility-based behavior.
+
 ### HTN: Hierarchical Task Networks
 
 * "SHOP2: An HTN Planning System": https://arxiv.org/pdf/1106.4869.pdf
@@ -62,6 +89,59 @@ Behavior Trees": https://lornat75.github.io/papers/2019/colledanchise-iros.pdf
   * A definition of semantics for HTN
 * "Learning Hierarchical Task Networks with Preferences from Unannotated Demonstrations": https://proceedings.mlr.press/v155/chen21d/chen21d.pdf
   * Learn tasks from examples, then optimize them.
+
+
+### HGN: Hierarchical Goal Networks
+
+There should be some "transitional" papers here. The essence is: Goals can be decomposited into subgoals, just like HTN composes plans.
+
+
+### Goal-Driven Autonomy
+
+HGN can be augmented with mecanisms to monitor plan execution and to analyze and explain failures.
+
+* [Goal-Driven Autonomy in Planning and Acting](https://www.cse.lehigh.edu/~munoz/gda/05.Goal-Driven.Autonomy.in.Planning.and.Acting.v3.pdf)
+* [Hierarchical Goal Networks and Goal-Driven Autonomy: Going where AI Planning Meets Goal Reasoning](https://www.cs.umd.edu/~nau/papers/shivashankar2013hierarchical.pdf)
+* [Goal-Driven Autonomy for Responding to Unexpected Events in Strategy Simulations](http://matthewklenk.com/papers/CI-12-GDA.pdf)
+* [Goal Reasoning for an Autonomous Squad Member](https://apps.dtic.mil/sti/pdfs/ADA621708.pdf)
+* [Goal-Driven Autonomy in a Navy Strategy Simulation](http://matthewklenk.com/papers/AAAI-IS-10-GDA%20(Camera%20Ready,%20Final,%20bib).pdf)
+* [Goal-driven Autonomy Without GDA](https://cs.unh.edu/~ruml/papers/no-gda-aaai-bridge-2023.pdf)
+* [Is Everything Going According to Plan? - Expectations in Goal Reasoning Agents](https://www.cse.lehigh.edu/~munoz/Publications/AAAI19.pdf)
+  Draws on the below thesis on Introspective Multistrategy Learning.
+* [Expectation-Aware Planning: A Unifying Framework for Synthesizing and Executing Self-Explaining Plans for Human-Aware Planning](https://cdn.aaai.org/ojs/5634/5634-13-8859-1-10-20200512.pdf)
+
+
+#### Rebel Agents
+
+Agents can have mechanisms that make them reject or refine given goals; This is called rebellion.
+
+* [A Rebellion Framework with Learning for Goal-Driven Autonomy](https://corescholar.libraries.wright.edu/cgi/viewcontent.cgi?article=3618&context=etd_all)
+* [Rebel Agents That Adapt to Goal Expectation Failures](https://par.nsf.gov/servlets/purl/10349752)
+  * There may be reasons to reject the current goal; For example:
+    * An observation makes a different course of action preferable, e.g. informing a human about the sighting of a dangerous animal.
+    * A goal turns out to be unachievable.
+  * Boggs, Dannenhauer, Floyd and Aha (2018)'s approach:
+    * Given a world and goals, each goal is checked for achievability.
+      * If it isn't achievable, it is discarded.
+      * If it is achievable, it is fully planned and acted out.
+      * If a goal is achievable, but undesirable (the action to achieve it results in a state of lower utility), the agent may rebel.
+        * The agent has an inherent tendency to rebellion. Based on that, a probabilistic choice is made.
+	* If the agent chooses to rebel, it informs its user and asks for permission.
+	* If the human rejects the rebellion, the agent probabilistically chooses either to reject or comply with the human’s advice.
+    * This paper replaces the probabilistic choice based on [MICDA](https://cdn.aaai.org/ojs/9886/9886-13-13414-1-2-20201228.pdf)
+* [Explaining Rebel Behavior in Goal Reasoning Agents](https://dtdannen.github.io/faim2018grw/papers/ExplainingRebelBehaviorinGoalReasoningAgents.pdf)
+* [Computational Models of Rebel Agent Behavior for Interactive Narrative](https://dtdannen.github.io/papers/aaai_fs_19.pdf)
+
+
+### Introspective Multistrategy Learning
+
+* [Introspective Multistrategy Learning: Constructing a Learning Strategy under Reasoning Failure](https://apps.dtic.mil/sti/tr/pdf/ADA495211.pdf)
+  In an AI where the reasoning / learning process is represented as
+  knowledge, when a failure in the reasoning process is detected, the
+  failure can be analyzed and repaired. This thesis does among other
+  things define a taxonomy of error types, which other papers draw upon.
+* [Introspective multistrategy learning: On the construction of learning strategies](https://core.ac.uk/download/pdf/81111744.pdf)
+* [An Empirical Study of Computational Introspection: Evaluating Introspective Multistrategy Learning in the Meta-AQUA System](https://apps.dtic.mil/sti/tr/pdf/ADA316878.pdf#page=137)
 
 
 ### Search
