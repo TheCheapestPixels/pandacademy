@@ -114,7 +114,7 @@ will create them in code, but most of the time in practice we will load
 artist-generated models from files. To do so, we will use `base.loader`,
 which has methods to load models, textures, sounds, and so on.
 
-Thus we arrive at [`main_basic_3.py`](./main_basic_2.py), where we load
+Thus we arrive at [`main_basic_3.py`](./main_basic_3.py), where we load
 a model, attach it to the root of the scene graph, then move the default
 camera in that scene graph back by ten units. Running this program, you
 should see a ball with a smiley face on it.
