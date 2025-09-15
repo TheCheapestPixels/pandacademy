@@ -1,17 +1,24 @@
-Procedural modeling and animation
----------------------------------
+Creating Geometry
+=================
 
 In this course we will deal with using code to create geometric models,
-and animate them. We will not deal with advanced procedural generation
-algorithms to create complex objects, only with the underlying API that
-would also be used to turn such complex models into actual data that
-Panda3D can work on.
+and animate them, so as to get an understanding for the data structures
+that we are working with. In practice, there are two sources for art
+assets that we are working with here:
+1) Artists. Since we have already loaded pre-made models, we have this
+   aspect covered, and this course is a look under the hood of what the
+   artist's programs did to create the model file.
+2) Procedural generation. We will not deal with advanced procedural
+   generation algorithms to create complex objects here, only with the
+   underlying API that would also be used to turn such complex models
+   into actual data that Panda3D can work on.
 
 Special thanks go to [Entikan](https://entikan.dimension.sh/) whose
 trailblazing led to me developing these examples based on his code.
 
 
-### geometry
+Geometry
+--------
 
 Here we generate a static model purely in code, so as to see what is
 going on under the hood. In
@@ -24,16 +31,24 @@ going on under the hood. In
 actually look at something.
 
 
-### pbr
+### PBR
 
-Building on `geometry`, we discuss the properties of PBR-capable models
-and their textures. [`pbr_model.py`](./pbr/pbr_model.py) shows
+This section is a short excurse into waters that we will dip our toes in
+deeper later on. Since PBR is
+* is a very popular use case,
+* is a sufficiently complex use case to show how things scale up,
+* uses textures, "the other kind of art asset",
+we will take a glimpse at it here anyway.
+
+The idea is that we load all relevant information about our model's
+optical properties into its vertices and textures.
+[`pbr_model.py`](./pbr/pbr_model.py) shows
 * what vertex columns a PBR model typically uses,
 * what materials are and do,
-* what information is encoded in textures, and how,
+* what information is encoded in textures, and
 * how to procedurally generate images to load into textures.
 
-There are three executable progrems this time, where
+There are three executable programs this time, where
 * [`main_no_pbr.py`](./pbr/main_no_pbr.py) shows how the model looks in
   the default renderer,
 * [`main_simplepbr.py`](./pbr/main_simplepbr.py) uses Moguri's
@@ -42,14 +57,11 @@ There are three executable progrems this time, where
   Simulan's
   [`panda3d-complexpbr` package](https://github.com/rayanalysis/panda3d-complexpbr).
 
-The specific PBR pipelines are at this point maybe a bit of a
-distraction; The important thing is that we now know how any model is
-represented as data, and have seen a rather involved example of how that
-data is laid out. Nonetheless, they serve as a nice example of what is
-possible when you know what you are doing.
 
+Animation
+---------
 
-### bones
+### Bones
 
 Also building on `geometry`, we create the model of a tentacle, and give
 it a chain of bones to animate it around. As you will doubtlessly expect
@@ -83,3 +95,8 @@ procedural animation techniques building on those. There are
 
 Again, these applications only serve to demonstrate what is possible;
 The important information is how the model is set up.
+
+
+### Shapekeys
+
+FIXME

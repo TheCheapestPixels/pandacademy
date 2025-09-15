@@ -45,7 +45,7 @@ that keeps Panda3D programs together.
    eventManager             0  Dispatches events
    ivalLoop                20  Progresses Intervals
    collisionLoop           30  ShowBase's hook for a collision traverser
-   garbageCollectStates    46  Run the arbage collector
+   garbageCollectStates    46  Run the garbage collector
    igLoop                  50  Rendering
    audioLoop               60  Audio
   ```
@@ -72,7 +72,7 @@ that keeps Panda3D programs together.
   of creating extraneous `DirectObject`s.
 
   With `base.accept(event_name, function)` you can register functions to
-  be called when a certain type of event is thrown system;
+  be called when a certain type of event is thrown;
   `base.messenger.send(event_name)` enqueues a new event in the event
   queue, while the `eventManager` task pulls one event after the other
   from the queue until it is empty, dispatching each in turn to the

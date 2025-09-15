@@ -80,6 +80,8 @@ graphics_engine = GraphicsEngine()
 #   reason to use several GSGs is when you absolutely, positively, need
 #   to isolate graphics resources from each other, for instance when
 #   writing to GSGs from different threads.
+#   GSGs also store a reference to the Loader from which they draw their
+#   resources. This they get from the GraphicsEngine upon creation.
 fbprops = FrameBufferProperties.getDefault()
 wprops = WindowProperties.getDefault()
 flags = GraphicsPipe.BFFbPropsOptional | GraphicsPipe.BFRequireWindow

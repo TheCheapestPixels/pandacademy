@@ -63,12 +63,8 @@ the Game of Life's performance; Profiling does so far show an actual
 Graphical Shaders
 -----------------
 
-* [Minimal shader example](shaders/minimal/shader.py) demonstrates
-  vertex and fragment shader. That is sufficient to explain the default
-  shading pipeline, and show off first tricks.
-* [All-stages example](shaders/all_stages/shader.py)
-  * all five rendering shaders in action
-  * hardware instancing.
+First, two small tools to help you in the process of tinkering with
+graphical shaders:
 * [Pandatoy](pandatoy/main.py) is a small tool akin to the website
   [Shadertoy](https://www.shadertoy.com/), albeit with a much reduced
   feature set.
@@ -76,19 +72,110 @@ Graphical Shaders
   that you can plug into your own programs to shade arbitrary objects,
   and have the same hotload functionality.
 
+What *is* the difference between compute and other shaders? They are
+invoked to fulfill some function within the rendering process, and for
+that purpose, they get access to specific inputs, outputs, and
+operations. So let's go over how that rendering process works.
 
-Notes
------
 
-* Pipeline
-  1. Vertex shader
-  2. Tessellation Control / Evaluation shaders, Geometry shader
-  3. Rasterization
-  4. Fragment shader
-  5. Depth Test
-* Early Fragment Test (a.k.a. Early Depth Test or Early Z-Test):
-  Usually, depth testing happens after the fragment shader. If no
-  fragment shader is present, or it neither uses the `discard` keyword
-  nor writes to `gl_FragDepth`, then the test can be done before
-  fragment shading, and if the fragment gets rejected, the fragment
-  shader won't be executed.
+### Vertex Data
+
+As you saw in the chapter about geometric modeling, models are made from
+triangular faces, which are connecting the model's vertices. These
+vertices are specified in the model's space (or, more verbosely, in the
+coordinate system that is relative to the model's origin).
+
+Scenes as a whole contains models, cameras, and lights. While that was
+not an exhaustive list, it suffices to get basic graphics going. At the
+point that we are at now, a camera (from which's perspective we want to
+render something) has been selected, as well as the model that we want
+to render *right now*. Other models may have been rendered already.
+
+
+### The Pipeline
+
+The actual process is, depending on how you want to look at it, actually
+really simple, manageably complex, or absurdly intricate.
+
+If you want the highest performance, you have to know how the GPU does
+what it does, which goes beyond how the API to work with it works. This
+is about the actual algorithms that are etched into its silicon (or at
+least into the microcode). This level of detail goes beyond the scope of
+this course (and frankly, at this moment, it goes over my head as well.
+It can be found though in
+[this series of blog posts](https://fgiesen.wordpress.com/2011/07/09/a-trip-through-the-graphics-pipeline-2011-index/).
+
+At the intermediate level, we have two pathways that lead to the
+rasterizer. The "classic" route is that...
+* Vertex Data gets fed into the...
+* Vertex Shader, which outputs updated vertex data, which the...
+* Tessellation stage breaks down into even more triangles by letting
+  the...
+  * Tessellation Control Shader select the settings by which the...
+  * Tessellator generates the triangles, which the...
+  * Tessellation Evaluation Shader then equips with data.
+* The Geometry Shader then does processes the triangles, possibly
+  creating even more, or discarding them, until we finally reach the
+* Rasterizer, which turns the triangles into fragments.
+
+A newer approach is that a...
+* Task Shader generates work for the...
+* Mesh Generation, which outputs data that is fed into the...
+* Mesh Shader, which generates the geometry data that gets fed into
+  the...
+* Rasterizer.
+
+In either approach, the...
+* Rasterizer generates fragments which are then processed by the...
+* Fragment Shader, which outputs the final data, e.g. a pixel's color,
+  which gets inserted or blended into the final image, or gets
+  discarded, based on the...
+* Depth Test.
+
+This is a sensible level of detail to get started with, and it hits all
+the big steps of the process. However, the new approach requires very
+modern hardware, and the older one has several stages that do not get
+much use, specifically Tessellation and Geometry Shading. Thus, we will
+start at an even more simplified the model, which covers a wide swath of
+use cases. For curiosity's sake, here is
+[an example](shaders/all_stages/shader.py) that makes use of all the
+shaders in the classic pipeline, plus hardware instancing.
+
+The simple model is:
+* Vertex Data: We have already dealt with how to create this in the
+  course on
+  [Geometric Modeling](../geometric_modeling/geometric_modeling.md).
+* Vertex Shader
+* Rasterizer
+* Fragment Shader
+* Depth Test
+
+
+### Vertex shading
+
+The first thing that has to happen is that we find out where each vertex
+should end up on the screen. The simplest case is this:
+
+* The coordinates are given in the model's space, a.k.a. local space.
+* The model has a position in world space (the scene graph root's local
+  space).
+* The transformation between local and global space is given by the
+  model matrix, meaning that
+  `vertexInWorldSpace = ModelMatrix * vertexInLocalSpace;`
+* While that is a start, we actually need the vertices relative to the
+  camera, which is called the view space. The transformation from world
+  to view space is given by the view matrix:
+  `vertexInViewSpace = ViewMatrix * vertexInWorldSpace;`
+* FIXME: Projection matrix
+
+
+### Rasterization
+
+FIXME
+
+
+### Fragment shading
+
+FIXME
+* [Minimal shader example](shaders/minimal/shader.py) demonstrates
+  vertex and fragment shader.
