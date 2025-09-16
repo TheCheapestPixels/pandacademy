@@ -152,10 +152,10 @@ However, since this pipeline has proven unsatisfying in practice, as it
 introduces an overhead and bottlenecks due to switching between
 processing vertices and primitives, a wholly new approach has been
 introduced to replace the part of the pipeline before the rasterizer:
-* Task Shader generates work for the...
-* Mesh Generation, which outputs data that is fed into the...
-* Mesh Shader, which generates the geometry data that gets fed into
-  the...
+* Task Shader: Processes how many meshes to create.
+* Mesh Generation: Create the meshes.
+* Mesh Shader: Generate primitives. Like Compute Shaders, these can pull
+  in any kind of data.
 * Rasterizer
 * Fragment Shader
 * Depth Test

@@ -7,8 +7,8 @@ Panda3D" part done eventually, I am fully committing to scope creep, so
 as to let you loose one the whole wide world of game development.
 
 
-Preparatory Course
-------------------
+Preparatory Course for Graphics
+-------------------------------
 
 The graphics courses assume that you...
 * understand basic Python (you don't need to know the whole standard
@@ -23,7 +23,7 @@ The graphics courses assume that you...
   with anything. For a start though, we will mostly get away with `sin`,
   `cos`, and multiplying a matrix with a vector.
 * can `pip install panda3d` (preferably in a virtualenv, but it's your
-  system...)
+  system...) and use it to set up scenes.
 
 These requirements are a bit harsh, contain interesting topics *should*
 be explained here, as well as not containing other interesting topics
@@ -37,17 +37,22 @@ that should also be explained here; In particular:
       demonstrates:
       * Tasks and events, allowing you to structure your applications,
       * The scene graph, allowing you to structure your 3D scenes.
-
-
-From Data to Image
-------------------
-
-A course on computer graphics.
-
 - [ ] Scene Graph deep dive: Everything to know about `NodePath`, as
       far as it concerns this course.
+
+
+From (nearly) Zero to knowing what rendering and shaders are all about
+----------------------------------------------------------------------
+
+A course on computer graphics. We will...
+* use Panda3D to set up scenes, and the infrastructure to render them,
+* explore the rendering process in enough detail to configure it and
+  write shaders for it,
+* get an overview of the major technologies from which rendering
+  pipelines are pieced together.
+
 - [ ] [Geometric Modeling](./geometric_modeling/geometric_modeling.md):
-      A deeper look into meshes, animations, and textures. After this
+      A deeper look into meshes, textures, and animations. After this
       course, you will understand how the objects in your scene are
       represented as data. FIXME: lacks shapekeys
 - [ ] [The CPU side of rendering](./cpu_rendering/cpu_rendering.md):
@@ -59,13 +64,12 @@ A course on computer graphics.
       This explains what happens when the rendering process hits
       the metal, and how we control it with shaders. It also explains
       compute shaders, with which we can leverage the graphics card's
-      power for other tasks than rendering. FIXME: Also in the process
-      of being written...
+      power for other tasks than rendering. FIXME: losing in on being
+      done in scope. Lacks images and code example integration.
 - [ ] [Color: Physics-based Rendering (PBR)](./color/color.md): From
       Lambertian diffusion to all the effects. FIXME: Just notes so far.
-- [ ] [Shadows](./shadow/shadow.md): Explains shadow maps and, hopefully
-      eventually, shadow volumes. See also
-      [papers](./papers_and_talks.md#Graphics).
+- [ ] [Shadows](./shadow/shadow.md): Explains shadow maps. FIXME: Should
+      also explain shadow volumes.
 - [ ] [Light](./light/light.md): How to do (mostly) the same graphics
       with much less effort.
       FIXME: Subchapter on Tiled/Clustered/Volume is three links and a
@@ -93,7 +97,15 @@ probably composed in the rest of the image.
   * Atmosphere
   * Aurorae
 * Particle systems
+  * Fireworks
+  * Boids
+  * Physical systems
 * Navier-Stokes for wind, clouds, and water
+
+Other topics that should be dealt with:
+* Tessellation and Geometry Shaders
+* Task and Mesh Shaders (and how to get by with Compute Shaders)
+* Maybe move shadow volumes here.
 
 
 The Wider Field
