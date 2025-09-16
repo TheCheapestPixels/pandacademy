@@ -93,6 +93,7 @@ probably composed in the rest of the image.
   * Atmosphere
   * Aurorae
 * Particle systems
+* Navier-Stokes for wind, clouds, and water
 
 
 The Wider Field
