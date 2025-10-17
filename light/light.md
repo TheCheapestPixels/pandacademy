@@ -70,9 +70,6 @@ addressed by rendering the scene twice:
 2. A forward shading pass renders all transparent objects, and composits
    it with the result of the first pass.
 
-This results in a balance of all the advantages and drawbacks of the two
-techniques.
-
 
 ### Early Depth Test
 
@@ -172,11 +169,20 @@ called "light assignment".
 * For each tile that is at least partially covered by the light, we append the light's ID to that tile's list.
 * When lighting a fragment, we find the tile ID, then the light list.
 
+Footnote: We can probably render the lights at a resolution of `size of
+full image / tile edge length`. As jaggies may prevent a tile that
+should be lit from being included, we then "blur" the lights into the
+adjacent pixels. The original paper mentioned this as further research.
+
 
 ### Clustered Shading
 
 [Paper by Ola Olsson, Markus Billeter, and Ulf Assarsson, 2012](https://www.cse.chalmers.se/~uffe/clustered_shading_preprint.pdf)
 [Presentation by Ola Olsson](https://www.youtube.com/watch?v=uEtI7JRBVXk)
+[Tutorial](https://github.com/DaveH355/clustered-shading)
+[Another tutorial by Avalanche](https://www.humus.name/Articles/PracticalClusteredShading.pdf)
+[Yet another tutorial](http://www.aortiz.me/2018/12/21/CG.html)
+[...and another.](https://humus.name/index.php?page=Articles&ID=7)
 
 
 ### Volume Tiled Shading

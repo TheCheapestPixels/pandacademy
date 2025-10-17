@@ -1,10 +1,24 @@
 Anti-Aliasing
--------------
+=============
 
-The pixelated nature of computer-generated images gives rise to the
-"jaggies", steps-like artifacts at the edges of triangles. There are a
-lot of approaches to deal with them.
+The pixelated nature of computer-generated images gives rise to two
+phenomena that decrease an image's quality:
+* Moiré patterns on textures,
+* Jaggies, steps-like artifacts at the edges of triangles.
 
+
+Texture-based artifacts
+-----------------------
+
+Occur due to magnification/minification and sampling regular patterns
+
+### Mipmapping
+
+### Anisotropic Filtering
+
+
+Polygon-based Aliasing
+----------------------
 
 ### Super-sampling AA (SSAA)
 

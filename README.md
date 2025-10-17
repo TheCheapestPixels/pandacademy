@@ -51,14 +51,12 @@ For details, see the TODO list below.
 Content
 -------
 
-* [History](./history.md)
 * [Courses](./courses.md): Terse explanations around lavishly commented
   programs, explaining the basics of modern realtime computer graphics,
   and how they are used in and through Panda3D.
 * [Presentations slides](./presentations/presentations.md): Basically
   the target of a metaphorical cross-compilation from the
   above-mentioned courses to slide deck presentations.
-* [Noise](./noise/noise.md): Notes on noise, e.g. Perlin, Worley, PSRD.
 * [Papers and Talks](papers_and_talks.md): A collection of, and notes
   on, academic papers, blog posts, video presentations, and
   conference-style talks.
@@ -69,10 +67,8 @@ Content
 TODO
 ----
 
-* [ ] History: This is just a sketch.
 * [ ] Courses: See there.
 * [ ] Presentations: Just fragments so far.
-* [ ] Noise: Working code, but that's it. This should become a course.
 * [X] Papers and Talks: Basically a dumping ground in working condition.
       Further papers will be added as I discover them, notes on their
       content go into the "Paper Dissection" category, and as they form
@@ -83,6 +79,9 @@ TODO
 * [ ] Paper Dissection: Totally unintegrated. As mentioned above, this
       is the mulch from which courses and code grow.
 * [X] Other people's content: Another dumping ground.
+* [ ] Models
+      * https://www.intel.com/content/www/us/en/developer/topic-technology/graphics-research/samples.html
+      * https://github.com/KhronosGroup/glTF-Sample-Assets/
 
 
 NOTES

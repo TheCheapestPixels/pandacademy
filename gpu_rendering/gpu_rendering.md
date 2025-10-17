@@ -260,6 +260,27 @@ In Panda3D, these settings are on a per-NodePath base. For details,
 [this is the manual page](https://docs.panda3d.org/1.10/python/programming/render-attributes/depth-test-and-depth-write).
 
 
+History and Outlook
+-------------------
+
+Compute shaders and the rasterization pipeline (from vertex data to
+depth test) are the two basic building blocks of everything that is to
+follow. Historically, modern 3D graphics cards started out by offering
+the rasterization pipeline. People started writing data that they wanted
+processed into textures, used full-screen quads to run the rasterizer,
+and did their math in the fragment shader; This was called "General
+Computing on the GPU" (GPGPU). Then compute shaders were introduced,
+streamlining the process. Eventually, people implemented rasterization
+in them, so both graphics and computing can now be done with either one.
+
+The descriptions of the techniques (Forward vs. Deferred Shading in
+particular) in the following courses may give the false impression that
+they are monolithic models that only work just as they are. In fact they
+are examples of what can be built from rasterization and compute, and
+pipelines used in actual production are complex mixtures of variations
+of these basic recipes.
+
+
 Code
 ----
 
@@ -273,3 +294,7 @@ FIXME: This would be better if it was interspersed with the course.
 * [HotShader](pandatoy/hotshader.py) is a cut-down version of Pandatoy
   that you can plug into your own programs to shade arbitrary objects,
   and have the same hotload functionality.
+* The [rasterizer / post-processing excurse](../light/light.md#Excurse)
+  might be placed here, as the parts are in place, but it isn't really
+  motivated yet. Maybe add a preview to nail down that compute and
+  rasterization are our two basic building blocks?

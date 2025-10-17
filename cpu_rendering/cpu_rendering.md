@@ -7,18 +7,34 @@ scene graph(s) into images on the screen. This consists of two steps:
   process,
 * Managing the rendering process.
 
+Pragmatically, this course deals with the answers to questions like...
+* How do I manage my window's appearance on the screen?
+* How do I set up additional cameras, and where do they draw to?
+* How do I open a second window?
+* What steps are taken to turn a scene into commands for the GPU?
+* If someone took away `ShowBase`, how would I begin to rebuild it, and
+  get Panda3D up and rendering again?
+
 Again, `ShowBase` does A LOT, especially when it comes to setting up a
-sensible boilerplate to start development from.
+sensible boilerplate to start development from, but it pays to know at
+least roughly what it does set up, so that we can work on that, and
+advance our programs beyond the mere boilerplate.
+
 [Here is a program](./internals.py) that sets it all up without
 resorting to `ShowBase`, and gives you most of the vocabulary to talk
 about rendering pipelines.
 
+If you are laser-focused on getting to the graphics stuff already, this
+is a good point to skip to the next course; The rest here is repeating
+what the program has shown, and adding more details.
+
 As you have seen, in Panda3D the rendering process is apparently out of
 the developer's hands; All that is needed is to call `render_frame()`
-and `flip_frame()` on your `GraphicsEngine`. However, while there is a
-standardized process for rendering, it is quite configurable; Instead of
-calling functions ourselves, we tell Panda3D when during rendering to
-call them. What we don't do procedurally, we do declaratively.
+and `flip_frame()` on your `GraphicsEngine`, or just letting the render
+task do that for you. However, while there is a standardized process for
+rendering, it is quite configurable; Instead of calling functions
+ourselves, we tell Panda3D when during rendering to call them. What we
+don't do procedurally, we do declaratively.
 
 
 Setting up a rendering pipeline

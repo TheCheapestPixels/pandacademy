@@ -47,6 +47,13 @@ Shadow Maps
 * Moment Shadow Maps (MSM)
   * Builds on VSM
 
+Footnote: We have assumed so far that each light has a shadow caster
+(frustum). This one-to-one relationship is not necessary, and breaking
+it allows for multiple similar lights to use the same shadow caster. A
+possibility for further research would be to LOD those shadow casters,
+splitting each into two and blending them into different positions as
+the camera approaches.
+
 
 Shadow Volumes
 --------------

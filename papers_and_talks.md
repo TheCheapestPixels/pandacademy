@@ -20,7 +20,7 @@ Artificial Intelligence
 ### Behavior trees
 
 * Parallelism in Behavior Trees
-  * "Improving the Parallel Execution of Behavior Trees": https://arxiv.org/pdf/1809.04898v1.pdf
+  * [Improving the Parallel Execution of Behavior Trees](https://arxiv.org/pdf/1809.04898v1.pdf)
     * Extends Behavior Trees by giving each node functions that report
       the node's current progress, and its use of resources.
     * Defines a `ParallelSync` node that routes ticks to the least
@@ -30,8 +30,7 @@ Artificial Intelligence
       as long as the necessary resources are available.
     * Both nodes, like the basic `Parallel`, fails if any child fails,
       succeeds when all children succeed, and otherwise remains active.
-  * "Analysis and Exploitation of Synchronized Parallel Executions in
-Behavior Trees": https://lornat75.github.io/papers/2019/colledanchise-iros.pdf
+  * [Analysis and Exploitation of Synchronized Parallel Executions in Behavior Trees](https://lornat75.github.io/papers/2019/colledanchise-iros.pdf)
     * Builds on "Improving the Parallel Execution of Behavior Trees".
     * Defines `ParallelSyncAbsolute` that has a list of barrier values.
       If there are children with a progress below any given barrier, the
@@ -39,12 +38,13 @@ Behavior Trees": https://lornat75.github.io/papers/2019/colledanchise-iros.pdf
       longer receive ticks.
     * Defines `ParallelSyncRelative` that ticks children so as to keep
       the slowest within a given range of the fastest.
-  * "EvolvingBehavior: Towards Co-Creative Evolution of Behavior Trees for Game NPCs": https://arxiv.org/pdf/2209.01020.pdf
-  * "Handling Concurrency in Behavior Trees": https://arxiv.org/pdf/2110.11813.pdf
+  * [EvolvingBehavior: Towards Co-Creative Evolution of Behavior Trees for Game NPCs](https://arxiv.org/pdf/2209.01020.pdf)
+  * [Handling Concurrency in Behavior Trees](https://arxiv.org/pdf/2110.11813.pdf)
 * Other
-  * "Parameterizing Behavior Trees": Treating BTs more like functions.
-  * "A survey of Behavior Trees in robotics and AI"
-  * "Generative Agents: Interactive Simulacra of Human Behavior": https://dl.acm.org/doi/pdf/10.1145/3586183.3606763
+  * [Parameterizing Behavior Trees](https://people.cs.umass.edu/~fmgarcia/Papers/Parameterizing%20Behavior%20Trees.pdf)
+    * Treating BTs more like functions.
+  * [A survey of Behavior Trees in robotics and AI](https://arxiv.org/pdf/2005.05842)
+  * [Generative Agents: Interactive Simulacra of Human Behavior](https://dl.acm.org/doi/pdf/10.1145/3586183.3606763)
 
 
 ### Utility AI
@@ -71,34 +71,47 @@ Behavior Trees": https://lornat75.github.io/papers/2019/colledanchise-iros.pdf
       * An Option's weight is the product of the weights of the Considerations, times the sum of boni.
       * Except for the TuningConsideration, bonus is usually 0.0.
 * [Design Patterns for the Configuration of Utility-Based AI](https://course.khoury.northeastern.edu/cs5150f13/readings/dill_designpatterns.pdf)
-  * Based on the DualUtility Reasoner.
+  * Based on the Dual Utility Reasoner.
   * Introduces a set of Considerations with wide applicability in shaping utility-based behavior.
+    * Opt-Out: If condition, set weight to 0.
+      * Any Opt-Out consideration fulfilled rules out the Option.
+    * Opt-In: If condition, set rank to higher preset.
+      * All considerations need a low default rank.
+      * Opt-Out overrules Opt-In.
+    * Commit: Once the Option is selected, raise its rank even higher based on execution history. FIXME: Clear that history fact when?
+    * Is-Done: When Option finishes successfully, set execution history fact, based on which this Consideration will set weight to 0.
+    * Cooldown: When Option finishes, set temporary execution history fact, based on which this Consideration will set weight to 0.
+    * Do-Once: When Option is selected, set permanent execution history fact, based on which this Consideration will set weight to 0.
+    * One-Time Bonus: Until the Option is selected, based on an execution history fact, increase the rank of this Consideration.
+    * Repeat Penalty: Based on an execution history fact, decrease the rank of this Consideration by some value every time that it is selected.
+
 
 ### HTN: Hierarchical Task Networks
 
-* "SHOP2: An HTN Planning System": https://arxiv.org/pdf/1106.4869.pdf
+* [SHOP2: An HTN Planning System](https://arxiv.org/pdf/1106.4869.pdf)
   * Foundational paper on HTN.
-* "Automated Planning and Scheduling; Lecture 8: Hierarchical Planning": https://algo2.iti.kit.edu/balyo/plan/files/l08.pdf
+* [Automated Planning and Scheduling; Lecture 8: Hierarchical Planning](https://algo2.iti.kit.edu/balyo/plan/files/l08.pdf)
   * Lecture slides on HTN basics
-* "An Overview of Hierarchical Task Network Planning": https://www.researchgate.net/profile/Ilche-Georgievski/publication/261217494_An_Overview_of_Hierarchical_Task_Network_Planning/links/54f9a4760cf28d6deca5128a/An-Overview-of-Hierarchical-Task-Network-Planning.pdf
-* "Hierarchical Task Network (HTN) Planning": https://pages.mtu.edu/~nilufer/classes/cs5811/2012-fall/lecture-slides/cs5811-ch11b-htn.pdf
+* [An Overview of Hierarchical Task Network Planning](https://www.researchgate.net/profile/Ilche-Georgievski/publication/261217494_An_Overview_of_Hierarchical_Task_Network_Planning/links/54f9a4760cf28d6deca5128a/An-Overview-of-Hierarchical-Task-Network-Planning.pdf)
+* [Hierarchical Task Network (HTN) Planning](https://pages.mtu.edu/~nilufer/classes/cs5811/2012-fall/lecture-slides/cs5811-ch11b-htn.pdf)
   * Also lecture slides on HTN basics
-* "Combining Domain-Independent Planning and HTN Planning: The Duet Planner": https://www.cs.umd.edu/~nau/papers/gerevini2008combining.pdf
+* [Combining Domain-Independent Planning and HTN Planning: The Duet Planner](https://www.cs.umd.edu/~nau/papers/gerevini2008combining.pdf)
   * Seems to combine GOAP and HTN.
-* "On Hierarchical Task Networks": https://hal.science/hal-01692705/document
+* [On Hierarchical Task Networks](https://hal.science/hal-01692705/document)
   * A definition of semantics for HTN
-* "Learning Hierarchical Task Networks with Preferences from Unannotated Demonstrations": https://proceedings.mlr.press/v155/chen21d/chen21d.pdf
+* [Learning Hierarchical Task Networks with Preferences from Unannotated Demonstrations](https://proceedings.mlr.press/v155/chen21d/chen21d.pdf)
   * Learn tasks from examples, then optimize them.
 
 
 ### HGN: Hierarchical Goal Networks
 
-There should be some "transitional" papers here. The essence is: Goals can be decomposited into subgoals, just like HTN composes plans.
+* [Hierarchical Goal Networks: Formalisms and Algorithms for Planning and Acting](http://www.cs.umd.edu/~nau/others-papers/shivashankar2015hierarchical.pdf)
+* [A Hierarchical Goal-Based Formalism and Algorithm for Single-Agent Planning](https://www.ifaamas.org/Proceedings/aamas2012/papers/1F_3.pdf)
 
 
 ### Goal-Driven Autonomy
 
-HGN can be augmented with mecanisms to monitor plan execution and to analyze and explain failures.
+HGN can be augmented with mechanisms to monitor plan execution and to analyze and explain failures.
 
 * [Goal-Driven Autonomy in Planning and Acting](https://www.cse.lehigh.edu/~munoz/gda/05.Goal-Driven.Autonomy.in.Planning.and.Acting.v3.pdf)
 * [Hierarchical Goal Networks and Goal-Driven Autonomy: Going where AI Planning Meets Goal Reasoning](https://www.cs.umd.edu/~nau/papers/shivashankar2013hierarchical.pdf)
@@ -142,6 +155,12 @@ Agents can have mechanisms that make them reject or refine given goals; This is 
   things define a taxonomy of error types, which other papers draw upon.
 * [Introspective multistrategy learning: On the construction of learning strategies](https://core.ac.uk/download/pdf/81111744.pdf)
 * [An Empirical Study of Computational Introspection: Evaluating Introspective Multistrategy Learning in the Meta-AQUA System](https://apps.dtic.mil/sti/tr/pdf/ADA316878.pdf#page=137)
+
+
+### Explainability
+
+* [Explaining Rebel Behavior in Goal Reasoning Agents](https://arxiv.org/pdf/1905.11437)
+  Seems mostly to be a motivational paper about explainability.
 
 
 ### Search
@@ -201,6 +220,7 @@ Procedural Generation
 * "A 3D visualisation environment modelling the evolution of north-west Europe since the Last Glacial Maximum": https://diglib.eg.org/bitstream/handle/10.2312/LocalChapterEvents.TPCG.TPCG07.229-235/229-235.pdf?sequence=1&isAllowed=y
 * "Landlab: A modular Earth Surface Dynamics modeling library" https://landlab.readthedocs.io/en/latest/#
 
+
 ### Cities and Buildings
 
 * "Procedural Generation of Urban Landscape with Extended L-System for Virtual Worlds": https://core.ac.uk/download/pdf/223208563.pdf
@@ -222,15 +242,28 @@ Procedural Generation
 * Plastic Trees: Interactive Self-Adapting Botanical Tree Models: https://www.academia.edu/download/46163297/Plastic_trees_interactive_self-adapting_20160602-6738-5ro83z.pdf
 * Rendering Leaves Using Hardware Tessellation: http://www.nik.no/2010/16-Skjermo.pdf
 * Remodelling of Botanical Trees for Real-Time Simulation: http://diglib.eg.org/bitstream/handle/10.2312/LocalChapterEvents.TPCG.TPCG11.001-008/001-008.pdf
+* Texture-Lobes for Tree Modelling: https://cfcs.pku.edu.cn/baoquan/docs/20180621162504257462.pdf
+* Synthesizing Bark: https://inria.hal.science/inria-00537488/document
+  * 2002
+* Interactive Modeling of Tree Bark: https://www.microsoft.com/en-us/research/wp-content/uploads/2016/02/wang_interactive.pdf
+* Procedural Modeling of Tree Bark: https://dspace.cuni.cz/bitstream/handle/20.500.11956/99752/130231963.pdf?sequence=1
+* A Procedural Approach for Stylized Bark Shading: https://graphics.pixar.com/library/ElementalBark/paper.pdf
+* Real-Time GPU Tree Generation: https://diglib.eg.org/items/93fc78c0-71fa-4511-8564-a7e5268bf27a
+  * Weber-Penn on the GPU
+
+
+### Sky
+
+* [A Physically-Based Night Sky Model](http://171.67.77.70/papers/nightsky/nightsky.pdf)
 
 
 ### Aurora Borealis / Australis
 
-* "Simulating the Aurora Borealis": https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=f3bfb057bb50e020b7a14eb42cf97b562e169635
+* [Simulating the Aurora Borealis](https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=f3bfb057bb50e020b7a14eb42cf97b562e169635)
   See [Aurora paper dissections](paper_dissection/aurora.md)
-* "Interactive Volume Rendering Aurora on the GPU": https://otik.uk.zcu.cz/bitstream/11025/1242/1/Lawlor.pdf
+* [Interactive Volume Rendering Aurora on the GPU](https://otik.uk.zcu.cz/bitstream/11025/1242/1/Lawlor.pdf)
   See [Aurora paper dissections](paper_dissections/aurora.md)
-* "Aurora Rendering with Sheet Modeling Technique": http://www.cs.rpi.edu/~cutler/classes/advancedgraphics/S09/final_projects/ng.pdf
+* [Aurora Rendering with Sheet Modeling Technique](http://www.cs.rpi.edu/~cutler/classes/advancedgraphics/S09/final_projects/ng.pdf)
 
 
 ### Other
@@ -295,6 +328,9 @@ Graphics
   * Relation between eye gaze and foot placement when walking over rough terrain: https://www.sciencedirect.com/science/article/pii/S0960982218303099 
   * Youtube channel about game animation: https://yewtu.be/channel/UCxO_ya-RmAXCXJCU54AxYFw
   * "5 ways to draw an outline": https://alexanderameye.github.io/notes/rendering-outlines/
+  * Ubisoft's Learned Motion Matching
+    * [Paper](https://www.ubisoft.com/en-us/studio/laforge/news/6xXL85Q3bF2vEj76xmnmIu/introducing-learned-motion-matching)
+    * [SIGGRAPH 2020 presentation](https://www.youtube.com/watch?v=16CHDQK4W5k)
 * Decals
   * https://martindevans.me/game-development/2015/02/27/Drawing-Stuff-On-Other-Stuff-With-Deferred-Screenspace-Decals/
   * https://bartwronski.com/2015/03/12/fixing-screen-space-deferred-decals/
@@ -337,6 +373,9 @@ Game Design
 * Metagame balance math: https://www.youtube.com/watch?v=miu3ldl-nY4
 * Never Just One Problem design principle (God of War): https://www.youtube.com/watch?v=snFATnSgdNY 
 * RPG design resources: https://www.reddit.com/r/RPGdesign/wiki/resources/
+* How Difficulty Turned DOOM into an RPG: https://www.youtube.com/watch?v=tVJUGoSSuzE
+  * Defines six types of difficulty
+* Eight kinds of fun: https://8kindsoffun.com/
 
 
 Storytelling
@@ -390,3 +429,5 @@ Things that don't fit into any category above
 * What went wrong with gaming (marketing)?: https://youtu.be/g16heGLKlTA?t=506
 * Introduction on aerodynamics: https://github.com/barbagroup/AeroPython
 * [How to build a BVH](https://jacco.ompf2.com/2022/04/13/how-to-build-a-bvh-part-1-basics/)
+* [Offset Geometric Contact (OGC)](https://graphics.cs.utah.edu/research/projects/ogc/)
+  * Penetration-free cloth simulation

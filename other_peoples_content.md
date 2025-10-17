@@ -6,6 +6,7 @@ Master Classes
 
 * Richard Garriot talks Ultima: https://archive.org/details/warren_spector_master_class/12+-+richard_garriot.mov
 * Will Wright on Designing User Interfaces to Simulation Games: https://donhopkins.medium.com/designing-user-interfaces-to-simulation-games-bd7a9d81e62d
+* Will Wright about design and simulation: https://www.youtube.com/watch?v=c91IWh4agzU
 * Warren Spector's UT class: https://www.youtube.com/playlist?list=PLC4AF467F9391D767
 * [TU Wien Rendering / Ray Tracing Course](https://www.youtube.com/playlist?list=PLujxSBD-JXgnGmsn7gEyN28P1DnRZG7qi)
 
