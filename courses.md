@@ -77,8 +77,8 @@ A course on computer graphics. We will...
       done in scope. Lacks images and code example integration.
 - [ ] [Color: Physics-based Rendering (PBR)](./color/color.md): From
       Lambertian diffusion to all the effects. FIXME: Just notes so far.
-- [ ] [Shadows](./shadow/shadow.md): Explains shadow maps. FIXME: Should
-      also explain shadow volumes.
+- [ ] [Shadows](./shadow/shadow.md): Explains shadow maps and ambient
+      occlusion. FIXME: Should also explain shadow volumes.
 - [ ] [Light](./light/light.md): How to do (mostly) the same graphics
       with much less effort.
       FIXME: Subchapter on Tiled/Clustered/Volume is three links and a

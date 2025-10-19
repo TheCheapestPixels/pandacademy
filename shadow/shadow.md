@@ -55,6 +55,83 @@ splitting each into two and blending them into different positions as
 the camera approaches.
 
 
+Ambient Occlusion
+-----------------
+
+Basic ambient light assumes that every point on a surface is equally
+affected by the light. This is simple, but unrealistic, as the light
+from the background environment does not penetrate fully into crevasses.
+Ambient Occlusion techniques aim to fix this.
+
+
+### Ambient Occlusion Maps
+
+These are a single channel of textures that are prebaked by the modeling
+software. They...
+* are fast,
+* take up memory,
+* do not react dynamically to changes in the environment.
+
+
+### Screen Space Ambient Occlusion (SSAO)
+
+Papers:
+* ["Finding Next Gen - CryEngine 2", Mittring, 2007](https://web.archive.org/web/20170811191334id_/http://developer.amd.com/wordpress/media/2012/10/Chapter8-Mittring-Finding_NextGen_CryEngine2.pdf) chapter 8.5.4.3
+* ["Hardware Accelerated Ambient Occlusion Techniques on GPUs"](http://www.okanarikan.com/assets/Papers/SSAO/paper.pdf)
+
+
+### Horizon Based Ambient Occlusion (HBAO)
+
+Papers:
+* ["Image-Space Horizon-Based Ambient Occlusion", Bavoil, Sainz, Dimitrov, 2008](https://www.cse.chalmers.se/edu/year/2017/course/TDA361/Advanced%20Computer%20Graphics/Image-Space%20Horizon-Based%20Ambient%20Occlusion.pdf)
+
+
+### Ambient Occlusion Volumes
+
+Papers:
+* ["Ambient Occlusion Volumes", McGuire, 2010](https://research.nvidia.com/sites/default/files/pubs/2010-06_Ambient-Occlusion-Volumes/McGuire10AOV.pdf)
+
+
+### Scalable Ambient Occlusion (SAO, a.k.a. HBAO+)
+
+Papers:
+* ["Scalable Ambient Obscurance", McGuire, Mara, Luebke, 2012](https://research.nvidia.com/sites/default/files/pubs/2012-06_Scalable-Ambient-Obscurance/McGuire12SAO.pdf)
+
+
+### Ground Truth Ambient Occlusion (GTAO)
+
+Papers:
+* ["Practical Real-Time Strategies for Accurate Indirect Occlusion", Jimenez, Wu, Pesce, Jarabo, 2016](https://www.activision.com/cdn/research/Practical_Real_Time_Strategies_for_Accurate_Indirect_Occlusion_NEW%20VERSION_COLOR.pdf)
+
+
+### Visibility Bitmask Ambient Occlusion (VBAO)
+
+Papers:
+* ["Screen Space Indirect Lighting with Visibility Bitmask", Therrien, Levesque, Gilet, 2023](arxiv.org/pdf/2301.11376)
+
+
+### Voxel-Accelerated Ambient Occlusion (VXAO)
+
+FIXME
+
+
+### Distance Fields Ambient Occlusion (DFAO)
+
+FIXME
+
+
+### Neural Network Ambient Occlusion (NNAO)
+
+* ["Neural Network Ambient Occlusion", Holden, Saito, Komura, 2016](https://theorangeduck.com/media/uploads/other_stuff/nnao.pdf)
+* [According to an author](https://theorangeduck.com/page/neural-network-ambient-occlusion),
+  it can be improved upon by using the spiral-based sampling from SAO.
+
+
+### Other links
+
+* [GDC 2016 presentation on HBAO+, HBAO Ultra, and VXGI/VXAO](https://developer.download.nvidia.com/gameworks/events/GDC2016/atatarinov_alpanteleev_advanced_ao.pdf)
+
+
 Shadow Volumes
 --------------
 
