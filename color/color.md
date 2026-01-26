@@ -48,7 +48,8 @@ Now you can do things like...
 
 * Classical techniques
 * Inverse hull mesh for outlines
-* Guilty Gear Xrd
+* [GDC talk on anime shading in Guilty Gear Xrd](https://www.youtube.com/watch?v=yhGjCzxJV3E)
+* [GDC talk on toon shading in Hi-Fi Rush](https://www.youtube.com/watch?v=gdBACyIOCtc)
 
 
 ### Crosshatching
