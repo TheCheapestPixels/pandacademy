@@ -9,11 +9,15 @@ scene graph(s) into images on the screen. This consists of two steps:
 
 Pragmatically, this course deals with the answers to questions like...
 * How do I manage my window's appearance on the screen?
-* How do I set up additional cameras, and where do they draw to?
 * How do I open a second window?
+* How do I set up additional cameras, and where do they draw to?
 * What steps are taken to turn a scene into commands for the GPU?
 * If someone took away `ShowBase`, how would I begin to rebuild it, and
   get Panda3D up and rendering again?
+
+
+The Engine Building Blocks
+--------------------------
 
 Again, `ShowBase` does A LOT, especially when it comes to setting up a
 sensible boilerplate to start development from, but it pays to know at

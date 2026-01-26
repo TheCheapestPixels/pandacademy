@@ -331,6 +331,7 @@ Graphics
   * Ubisoft's Learned Motion Matching
     * [Paper](https://www.ubisoft.com/en-us/studio/laforge/news/6xXL85Q3bF2vEj76xmnmIu/introducing-learned-motion-matching)
     * [SIGGRAPH 2020 presentation](https://www.youtube.com/watch?v=16CHDQK4W5k)
+  * [Inertialization: High-Performance Animation Transitions in Gears of War](https://www.youtube.com/watch?v=BYyv4KTegJI)
 * Decals
   * https://martindevans.me/game-development/2015/02/27/Drawing-Stuff-On-Other-Stuff-With-Deferred-Screenspace-Decals/
   * https://bartwronski.com/2015/03/12/fixing-screen-space-deferred-decals/
@@ -431,3 +432,5 @@ Things that don't fit into any category above
 * [How to build a BVH](https://jacco.ompf2.com/2022/04/13/how-to-build-a-bvh-part-1-basics/)
 * [Offset Geometric Contact (OGC)](https://graphics.cs.utah.edu/research/projects/ogc/)
   * Penetration-free cloth simulation
+* [Disney's twelve basic principles of animation](https://en.wikipedia.org/wiki/Twelve_basic_principles_of_animation)
+* [Pixar’s 22 Rules of Storytelling](https://www.aerogrammestudio.com/2013/03/07/pixars-22-rules-of-storytelling/)
