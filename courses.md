@@ -41,6 +41,9 @@ that should also be explained here; In particular:
 Panda3D Basics
 --------------
 
+A rapid onboarding to Panda3D, focused on creating and arranging 3D
+models.
+
 - [X] [Hello Panda3D](./hello_panda3d/hello_panda3d.md): Getting the
       basics out of the way. This is a quick onboarding to Panda3D that
       demonstrates:
@@ -99,14 +102,22 @@ Second course on graphics, specifically how to achieve effects like
 atmosphere, refraction, etc.; How to dip your toes into raytracing while
 working with a rasterizing pipeline, I guess. Most of these effects will
 probably composed in the rest of the image.
-*[Noise](./noise/noise.md): Fundamental to *so much*.
+* [Noise](./noise/noise.md): Fundamental to *so much*.
   * Terrain
+* [Fourier Transformation](./fourier/fourier.md): From signal to
+  spectrum and back.
+* [Hashing](https://web.comp.polyu.edu.hk/csmlyiu/conf/SIGMOD25_GPH.pdf)
 * Space partitioning
   * FIXME: SDF makes Tiled Shading more efficient, and BVH / octree is
     required for raymarching. So where to put it?
   * Topics
     * Spatial Hash
+      * ["Optimization of large-scale, real-time simulations by spatial hashing", Hastings, Mesit, 2005](https://www.researchgate.net/profile/Erin-Hastings/publication/228958917_Optimization_of_large-scale_real-time_simulations_by_spatial_hashing/links/09e41510efb459ec12000000/Optimization-of-large-scale-real-time-simulations-by-spatial-hashing.pdf)
+      * ["A Hash Table Construction Algorithm for Spatial Hashing Based on Linear Memory", Pozzer, Pahins, Heldal](https://www.researchgate.net/profile/Per-Gustavsson-2/publication/277870601_A_Hash_Table_Construction_Algorithm_for_Spatial_Hashing_Based_on_Linear_Memory/links/5575840a08ae7521586abaab/A-Hash-Table-Construction-Algorithm-for-Spatial-Hashing-Based-on-Linear-Memory.pdf)
+      * ["Better Spacial Hashing with Linear Memory Usage and Parallelism", Zhyhallo, Woźna-Szcześniak](https://www.scitepress.org/Papers/2024/124157/124157.pdf)
       * [bazhenovc's explanation](https://github.com/bazhenovc/SpatialIndex)
+      * ["SwiftSpatial: Spatial Joins on Modern Hardware", Jiang, Khavrona, Parvanov, Alonso](https://dl.acm.org/doi/pdf/10.1145/3725361)
+      * ["ASH: A Modern Framework for Parallel Spatial Hashing in 3D Perception", Dong, Lao, Kaess, Koltun](https://arxiv.org/pdf/2110.00511)
     * Octree
     * sparse voxel cone tracing (for global illumination?)
       * paper: https://research.nvidia.com/sites/default/files/publications/GIVoxels-pg2011-authors.pdf
